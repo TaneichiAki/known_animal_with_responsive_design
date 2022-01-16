@@ -3,7 +3,7 @@
 	require_once(__DIR__."/classes/Dao.php");
 	require_once(__DIR__."/constants.php");
 	session_start();
-
+	//ログインボタンを押下したら
 	//リクエストメソッドが「POST」ならば
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$msg = "";
@@ -14,7 +14,14 @@
 		}elseif($_REQUEST['password'] == ""){
 			$msg = "パスワードを入力してください。";
 		}else{
-
+			/*
+		メッセージ作成して、🈳じゃなければエラーメッセージをしゅつりょくし、処理終了
+		$msg = getMsg($name,$pswd);
+		if ()
+		{
+			exit
+		}
+		*/
 		try{
 			//$dbh = new PDO($dsn,$user,$password);
 			//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
