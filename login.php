@@ -1,80 +1,59 @@
-<link rel="stylesheet" href="login.css" type="text/css">
 <?php
 	require_once(__DIR__."/classes/Dao.php");
 	require_once(__DIR__."/constants.php");
+	/*
+	*セッション処理開始
+	*/
 	session_start();
-	//ログインボタンを押下したら
+	/*
+	*メッセージ
+	*/
+	$msg = "";
+	/*
+	*メッセージ出力ファンクション
+	*/
+	function getMsg($name,$password){
+		if($name == ""){
+			return "ユーザーIDを入力してください。";
+		}
+		if($password == ""){
+			return "パスワードを入力してください。";
+		}
+		return "";
+	}
+	//ログインボタン押下後
+	//初回ページ表示時にメッセージが出ないように記載
 	//リクエストメソッドが「POST」ならば
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
-		$msg = "";
-		//ユーザーIDが空ならば
-		if($_REQUEST['username'] == ""){
-			$msg = "ユーザーIDを入力してください。";
-		//パスワードが空ならば
-		}elseif($_REQUEST['password'] == ""){
-			$msg = "パスワードを入力してください。";
-		}else{
-			/*
-		メッセージ作成して、🈳じゃなければエラーメッセージをしゅつりょくし、処理終了
-		$msg = getMsg($name,$pswd);
-		if ()
-		{
-			exit
-		}
-		*/
+		$msg = getMsg($_REQUEST['username'],$_REQUEST['password']);
+
 		try{
-			//$dbh = new PDO($dsn,$user,$password);
-			//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
+			//データベースに接続し、ユーザーIDが一致するものを抽出
 			$sql = "select * from users where user_id = ?";
 			$user = Dao::db()->show_one_row($sql,array($_REQUEST['username']));
-			//sql文の組み立て
-			//$stmt = $dbh->prepare($sql);
-			//PDOのファンクションprepare()で準備をする
-			//$stmt->bindParam(1,$_REQUEST['username']);
-			//$_REQUESTは$_POSTをGETでもPOSTでも見れるようにしたもの。
-			//上記のsql文の？を埋める
 
-			//$stmt->execute();
-			//sqlを実行する。値は$stmtインスタンスの中に保管されている
-
-			//$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			//fetchAll(PDO::FETCH_ASSOC)でsqlの結果の取り出し
-
-			//var_dump($users);
-			//検索結果がある場合は配列で取得できる
-			//ない場合はarray(0)が取得できる
-			/*if(empty($users)) {
-				echo "ユーザーIDまたはパスワードが違います";
-				exit;
-			}
-			*/
-			//$usersに値が入っていて、かつ　パスワードがデータベース内で指定したユーザー名のものと一致したら、
+			//$userに値が入っていて、かつ　パスワードがデータベース内で指定したユーザー名のものと一致したら、
 			if( $user['result'] && password_verify($_REQUEST['password'], $user['data']['password']) == true) {
 
-				//セッションIDを再生成する
+				//セッションIDを再生成
 				session_regenerate_id(TRUE);
 				$_SESSION['login'] = $_REQUEST['username'];
-				//TOPページに遷移する。
+				//TOPページに遷移
 				header ('Location:'.Constants::TOP_URL);
 				exit;
 			}else{
+				//IDとパスワードの照合がとれなければ
 				$msg = "IDまたはパスワードが違います。";
 			}
 
-			/*foreach($dbh->query($sql) as $row) {
-				print($row['user_id']);
-				print($row['password'].'<br>');
-			}
-			*/
 		//phpではない外部のアプリと連携するときはtry catchでエラーが起きた時の動きを定義
 		}catch (PDOException $e) {
 			print('Error:'.$e->getMessage());
 			die();
 			}
 		}
-	}
 ?>
-
+<link rel="stylesheet" href="login.css" type="text/css">
 <!DOCTYPE html>
 <html lang="ja">
 <head>
