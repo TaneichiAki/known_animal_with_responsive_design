@@ -1,6 +1,6 @@
 <?php
-	require_once(__DIR__."/classes/Dao.php");
-	require_once(__DIR__."/classes/constants.php");
+	require_once(__DIR__."../classes/Dao.php");
+	require_once(__DIR__."../classes/constants.php");
 	/*
 	*セッション処理開始
 	*/
