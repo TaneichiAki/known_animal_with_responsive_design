@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 	<?php
-			require_once(__DIR__.'/constants.php');
+			require_once(__DIR__.'../classes/constants.php');
 	?>
 </head>
 <body>

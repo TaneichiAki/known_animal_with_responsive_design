@@ -5,8 +5,8 @@
 <link rel="stylesheet" type="text/css" href="./top.css">
 
 	<?php
-			require_once(__DIR__."/classes/Dao.php");
-			require_once(__DIR__."/constants.php");
+			require_once(__DIR__."../classes/Dao.php");
+			require_once(__DIR__."../classes/constants.php");
 			session_start();
 
 			if( !empty($_GET['btn_logout']) ) {

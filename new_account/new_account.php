@@ -5,16 +5,16 @@
 </head>
 <body>
 	<?php
-			require_once(__DIR__.'/constants.php');
-			require_once(__DIR__.'/classes/Dao.php');
+			require_once(__DIR__.'../classes/constants.php');
+			require_once(__DIR__.'../classes/Dao.php');
 			/*
 			$dsn = 'mysql:dbname='.Constants::DB_NAME.
-			' host='.Constants::DB_HOST. 
+			' host='.Constants::DB_HOST.
 			' port='.Constants::DB_PORT;
 			$user = Constants::DB_USER;
 			$password = Constants::DB_PASS;
 			$dbh = new PDO($dsn,$user,$password);
-			
+
 			$select_id='select count(user_id) from users where user_id=?';
 			$stmt_userid = $dbh->prepare($select_id);
 			$stmt_userid->bindParam(1,$_REQUEST['user_id']);
@@ -25,19 +25,19 @@
 			//exit;
 			$sql = "select * from users where user_id = ?";
 			$user_cnt = Dao::db()->count_row($sql,array($_REQUEST['user_id']));
-			
-		
+
+
 			if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$msg = "";
-				
-					
+
+
 			function valid($request){
 				$pattern = '/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/';
 				preg_match($pattern,$_REQUEST['pass'],$matches);
 
 				if($request['last_name'] ==  ""){
 					return "姓を入力してください。";
-				}	
+				}
 				if($request['first_name'] == ""){
 					return  "名を入力してください。";
 				}
@@ -75,9 +75,9 @@
 					return "半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上のパスワードにしてください。";
 				}
 			}
-			
+
 			$msg = valid($_POST);
-	
+
 			if($msg==""){
 				try{
 				//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
@@ -98,11 +98,11 @@
 					)
 				);
 				//sql文の組み立て
-				
+
 				//$stmt = $dbh->prepare($new_users_sql);
 				//PDOのファンクションprepare()で準備をする
-	
-				
+
+
 				//$stmt->bindParam(1,$_REQUEST['user_id']);
 				//$_REQUESTは$_POSTをGETでもPOSTでも見れるようにしたもの。
 				//上記のsql文の？を埋める
@@ -114,12 +114,12 @@
 				//$stmt->bindParam(7,$_REQUEST['gender']);
 				//$stmt->bindParam(8,$_REQUEST['mail']);
 				//$stmt->bindParam(9,$hash);
-				
+
 				//$stmt->execute();
 				header ('Location:'.Constants::NEW_ACCOUNT_DONE_URL);
 				//上記ページに遷移する。
 				exit;
-				
+
 				}catch (PDOException $e) {
 				//phpではない外部のアプリと連携するときはtry catchでエラーが起きた時の動きを定義した方が良い
 				print('Error:'.$e->getMessage());
@@ -127,7 +127,7 @@
 				}
 		}
 	}
-			
+
 	?>
 <center>
 	<form method="post" enctype="multipart/form-data">
@@ -138,7 +138,7 @@
 				}
 				?>
 				<!-$msgの値が空でなければ、$msgを出力する。->
-				
+
 
 			<div>
 				<input type="text" name="last_name" placeholder="姓">

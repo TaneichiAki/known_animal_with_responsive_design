@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <?php
-			require_once(__DIR__."/classes/Dao.php");
-			require_once(__DIR__.'/constants.php');
-			
-						 
+			require_once(__DIR__."../classes/Dao.php");
+			require_once(__DIR__.'../classes/constants.php');
+
+
 		if($_SERVER["REQUEST_METHOD"] != "POST"){
 			$msg = "";
 		}else{
@@ -35,19 +35,19 @@
 					$sql2 = "update users set password = ? where mail = ?";
 					$hash = password_hash($number, PASSWORD_DEFAULT);
 					Dao::db()->mod_exec($sql2,array($hash,$_REQUEST['mail']));
-					
+
 					mb_language("Japanese");
 					mb_internal_encoding("UTF-8");
-					
+
 					  $to = $_REQUEST['mail'];
 					  $title = '仮パスワード発行のお知らせ';
 					  $message = 'known_animalシステムからのお知らせです。'.PHP_EOL
 					  .'仮パスワードを発行しました。'.PHP_EOL
 					  .'仮パスワードは下記の通りです。'.PHP_EOL
 					  .'仮パスワード：'.$number;
-					  					  
+
 					  $headers = "From: known_animal@test.com";
-					
+
 					  if(mb_send_mail($to, $title, $message, $headers))
 					  {
 					    echo '入力したメールアドレスに仮パスワード発行のメールを送りました。<br />';
@@ -63,7 +63,7 @@
 						 window.location.href='<?php echo Constants::LOGIN_URL?>';
 						 }, 5*1000);
 					  </script>
-					  
+
 					  <?php
 					 }catch (PDOException $e) {
 					//phpではない外部のアプリと連携するときはtry catchでエラーが起きた時の動きを定義した方が良い
@@ -72,7 +72,7 @@
 					}
 			}
 		}
-	?>	 
+	?>
 	<title>パスワード再設定画面</title>
 </head>
 <body>
