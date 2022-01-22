@@ -8,30 +8,30 @@
 			require_once(__DIR__."/classes/Dao.php");
 			require_once(__DIR__."/constants.php");
 			session_start();
-			
+
 			if( !empty($_GET['btn_logout']) ) {
 				unset($_SESSION['login']);
 			}
 
-			
+
 			if(! isset($_SESSION['login'])){
 				header("Location:".Constants::LOGIN_URL);
 				exit();
 			}
 			//セッションIDがセットされていなかったらログインページに戻る
-			
+
 			//$dsn = 'pgsql:dbname='.Constants::DB_NAME.
-			//' host='.Constants::DB_HOST. 
+			//' host='.Constants::DB_HOST.
 			//' port='.Constants::DB_PORT;
 			//$user = Constants::DB_USER;
 			//$password = Constants::DB_PASS;
-			
+
 			//$dbh = new PDO($dsn,$user,$password);
 			//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
 			$animal_sql = 'select * from users inner join animal on users.id = animal.memberid  where user_id = ?';
 			//sql文の組み立て
 			$animals = Dao::db()->show_any_rows($animal_sql,array($_SESSION['login']));
-			
+
 			$count = Dao::db()->count_row($animal_sql,array($_SESSION['login']));
 			//var_dump($count);
 			//exit;
@@ -40,24 +40,24 @@
 			//$stmt->bindParam(1,$_SESSION['login']);
 			//$_REQUESTは$_POSTをGETでもPOSTでも見れるようにしたもの。
 			//上記のsql文の？を埋める
-			
+
 			//$stmt->execute();
 			//sqlを実行する。値は$stmtインスタンスの中に保管されている
-			
+
 			//$animals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			//fetchAll(PDO::FETCH_ASSOC)でsqlの結果の取り出し
 			//echo count($users);
 			//exit;
-			
+
 			$users_sql = 'select * from users where user_id = ?' ;
 			$users = Dao::db()->show_one_row($users_sql,array($_SESSION['login']));
-			
+
 			//$stmt2 = $dbh->prepare($users_sql);
 			//$stmt2->bindParam(1,$_SESSION['login']);
 			//$stmt2->execute();
-			
+
 			//$users = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-			
+
 	?>
 <title>ログイン</title>
 </head>
@@ -65,7 +65,7 @@
 		<div class = "titlebar">
 			<p class="top">トップページ</p>
 			<p class="account">ようこそ！ <?php echo $users['data']['first_name']?>さん</p>
-			
+
 			<form method="get" action="">
     			<input type="submit" class="btn_logout" name="btn_logout" value="ログアウト">
 			</form>
@@ -86,7 +86,7 @@
 				<center>
 					<table border = "1" style = "border-collapse: collapse">
 						<tr bgcolor="#dcdcdc"><th>No</th><th>イメージ</th><th>名称</th><th>科</th><th>特徴</th><th>知った日</th><th>編集</th></tr>
-	
+
 						<?php for($i = 0;$i < $count; $i++): ?>
 						<tr height=80px><td>
 						<?=$i+1 ;?>
@@ -116,7 +116,7 @@
 						 <?php
 						 echo $animals['data'][$i]['date'];
 						 ?>
-						 
+
 						 </td><td>
 						 <!--
 						 	http://160.16.148.161/~testaki/aki/edit.php?update_animal=1&hoge=fuga
@@ -127,7 +127,7 @@
 						 	fugaと表示する
 						 -->
 						 <button type="submit" onclick="location.href='<?php echo Constants::EDIT_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>'">更新</button>
-						 
+
 						 <button type="submit" onclick="window.open('<?php echo Constants::DELETE_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>','Delete','width=800,height=600')">削除</button>
 						 </td></tr>
 						 <?php endfor; ?>
