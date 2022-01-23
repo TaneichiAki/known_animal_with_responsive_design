@@ -12,6 +12,12 @@ class Constants {
 	const DB_PASS = "AKIaki3!";
 	//ルートディレクトリのURL
 	const ROOT_URL = "/~testaki";
+
+	//アプリログパス
+	const LOGPATH = "/home/testaki/logs/knownanimal.log";
+
+
+
 	//login.phpのURL
 	const LOGIN_URL = Self::ROOT_URL."/known_animal/login/login.php";
 	//top.phpのURL
@@ -50,5 +56,8 @@ class Constants {
 	const PASS_FORGET_URL = Self::ROOT_URL."/known_animal/pass_forget/pass_forget.php";
 	//サーバー上の動物の写真の登録フォルダ
 	const ANIMAL_PHOTO_SERVER = "/home/testaki/animal_photo/";
+
+
+
 }
 ?>
