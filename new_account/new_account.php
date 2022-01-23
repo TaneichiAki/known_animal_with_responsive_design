@@ -5,8 +5,8 @@
 </head>
 <body>
 	<?php
-			require_once(__DIR__.'../classes/constants.php');
-			require_once(__DIR__.'../classes/Dao.php');
+			require_once(__DIR__.'/../classes/constants.php');
+			require_once(__DIR__.'/../classes/Dao.php');
 			/*
 			$dsn = 'mysql:dbname='.Constants::DB_NAME.
 			' host='.Constants::DB_HOST.

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <?php
-			require_once(__DIR__."../classes/Dao.php");
-			require_once(__DIR__.'../classes/constants.php');
+			require_once(__DIR__."/../classes/Dao.php");
+			require_once(__DIR__.'/../classes/constants.php');
 
 
 		if($_SERVER["REQUEST_METHOD"] != "POST"){

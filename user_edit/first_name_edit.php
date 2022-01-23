@@ -6,27 +6,27 @@
 <body>
 
 	<?php
-			require_once(__DIR__."/classes/Dao.php");
-			require_once(__DIR__.'/constants.php');
+			require_once(__DIR__."/../classes/Dao.php");
+			require_once(__DIR__.'/../classes/constants.php');
 			session_start();
-			
+
 			if( !empty($_GET['btn_logout']) ) {
 				unset($_SESSION['login']);
 			}
 
-			
+
 			if(! isset($_SESSION['login'])){
 				header("Location:".Constants::LOGIN_URL);
 				exit();
 			}
 			//セッションIDがセットされていなかったらログインページに戻る
-			
+
 			//$dsn = 'pgsql:dbname='.Constants::DB_NAME.
-			//' host='.Constants::DB_HOST. 
+			//' host='.Constants::DB_HOST.
 			//' port='.Constants::DB_PORT;
 			//$user = Constants::DB_USER;
 			//$password = Constants::DB_PASS;
-			
+
 			//$dbh = new PDO($dsn,$user,$password);
 			//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
 			$users_sql = 'select * from users where user_id = ?';
@@ -37,31 +37,31 @@
 			//$stmt->bindParam(1,$_SESSION['login']);
 			//$_REQUESTは$_POSTをGETでもPOSTでも見れるようにしたもの。
 			//上記のsql文の？を埋める
-			
+
 			//$stmt->execute();
 			//sqlを実行する。値は$stmtインスタンスの中に保管されている
-			
+
 			//$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			//fetchAll(PDO::FETCH_ASSOC)でsqlの結果の取り出し
-			
+
 				if($_SERVER["REQUEST_METHOD"] != "POST"){
 			$msg = "";
 		}else{
 			if($_REQUEST['firstname'] == ""){
 				$msg = “名を入力してください。“;
 			}else{
-				try{					
+				try{
 					$sql2 = 'update users set first_name = ? where user_id = ?';
 					//sql文の組み立て
 					Dao::db()->mod_exec($sql2,array($_REQUEST['firstname'],$_SESSION['login']));
 					//$stmt = $dbh->prepare($sql2);
 					//PDOのファンクションprepare()で準備をする
-					
+
 					//$stmt->bindParam(1,$_REQUEST['firstname']);
 					//上記のsql文の？を埋める
-					
+
 					//$stmt->bindParam(2,$_SESSION['login']);
-					
+
 					//$stmt->execute();
 					//sqlを実行する。値は$stmtインスタンスの中に保管されている
 
@@ -77,7 +77,7 @@
 				}
 			}
 		}
-		
+
 ?>
 	<div>
 		<form method="post" enctype="multipart/form-data">
@@ -91,7 +91,7 @@
 				<br>
 		<div>新しい名	</div>
 		<div>
-		<input type="text" name="firstname" value="<?php echo $users['data']['first_name']?>"> 
+		<input type="text" name="firstname" value="<?php echo $users['data']['first_name']?>">
 		</div>
 		<br>
 		<input type="submit" value="更新">

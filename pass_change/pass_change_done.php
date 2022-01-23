@@ -5,9 +5,9 @@
 </head>
 <body>
 	<?php
-	require_once(__DIR__."/constants.php");
+	require_once(__DIR__."/../classes/constants.php");
 	session_start();
-				
+
 	if(! isset($_SESSION['login'])){
 			header("Location:".Constants::LOGIN_URL);
 			exit();

@@ -6,17 +6,17 @@
 
 <title>新規登録</title>
 	<?php
-			require_once(__DIR__."/classes/Dao.php");
-			require_once(__DIR__."/constants.php");
+			require_once(__DIR__."/../classes/Dao.php");
+			require_once(__DIR__."/../classes/constants.php");
 			session_start();
-			
+
 			if(! isset($_SESSION['login'])){
 				header("Location:".Constants::LOGIN_URL);
 				exit();
 			}
 			//セッションIDがセットされていなかったらログインページに戻る
-			
-			
+
+
 				if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$msg = "";
 		if($_REQUEST['animalname'] ==  ""){
@@ -45,28 +45,28 @@
 			//$user = Constants::DB_USER;
 			//$password = Constants::DB_PASS;
 		//
-		
+
 		try{
 			//$dbh = new PDO($dsn,$user,$password);
 			//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
 			$user_sql = 'select * from users  where user_id = ?';
 			//sql文の組み立て
 			$users2 = Dao::db()->show_one_row($user_sql,array($_SESSION['login']));
-			
+
 			//$stmt_animal = $dbh->prepare($animal_sql);
 			//PDOのファンクションprepare()で準備をする
 			//$stmt_animal->bindParam(1,$_SESSION['login']);
 			//$_REQUESTは$_POSTをGETでもPOSTでも見れるようにしたもの。
 			//上記のsql文の？を埋める
-			
+
 			//$stmt_animal->execute();
 			//$users2 = $stmt_animal->fetchAll(PDO::FETCH_ASSOC);
-			
+
 			$memberid = $users2['data']['id'];
-			
+
 			//rename("$img_data","./animal_photo/test.jpg");
-			
-			
+
+
 			/*$fp = fopen($img_data, "r");
 			$data = fread($fp,filesize($img_data));
 			fclose($fp);
@@ -80,23 +80,23 @@
 			//exit;
 			//$stmt->bindParam(1,$_REQUEST['animalname']);
 			//上記のsql文の？を埋める
-			
+
 			//$stmt->bindParam(2,$_REQUEST['family']);
-			
+
 			//$stmt->bindParam(3,$_REQUEST['features']);
-			
+
 			//$stmt->bindParam(4,$_REQUEST['date']);
-			
+
 			//$stmt->bindParam(5,$memberid);
-			
+
 			//$stmt->execute();
 			//sqlを実行する。値は$stmtインスタンスの中に保管されている
-			
+
 			//$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			//fetchAll(PDO::FETCH_ASSOC)でsqlの結果の取り出し
 			//$insert_id = $dbh->lastInsertId();
 			move_uploaded_file($_FILES['image']['tmp_name'] , Constants::ANIMAL_PHOTO_SERVER.$insert_id['id'].'_animal.jpg' );
-			
+
 			header ('Location:'.Constants::TOP_URL);
 				//上記ページに遷移する。
 				exit;
@@ -121,27 +121,27 @@
 				}
 				?>
 				<!-$msgの値が空でなければ、$msgを出力する。->
-				
+
 
 			<div>
 				<center>
 					<div>
 						<input type="name" name="animalname" placeholder="動物の名称">
 					</div>
-					
+
 					<div>
 						<input type="family" name="family" placeholder="何科">
 					</div>
-					
+
 					<div>
 						<input type="features" name="features" placeholder="特徴">
 					</div>
-					
+
 					<div>
 						<input type="date" name="date" placeholder="知った日">
 					</div>
-					
-					<div> 
+
+					<div>
 						<input type="file" name="image">
 						<br>
 						<br>
@@ -155,4 +155,3 @@
 		</form>
 	</div>
 </body>
-

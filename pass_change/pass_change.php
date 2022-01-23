@@ -5,17 +5,17 @@
 </head>
 <body>
 	<?php
-	require_once(__DIR__."/classes/Dao.php");
-	require_once(__DIR__."/constants.php");
+	require_once(__DIR__."/../classes/Dao.php");
+	require_once(__DIR__."/../classes/constants.php");
 	session_start();
-				
+
 	if(! isset($_SESSION['login'])){
 			header("Location:".Constants::LOGIN_URL);
 			exit();
 		}
 			//セッションIDがセットされていなかったらログインページに戻る
 		$id = $_SESSION['login'];
-		
+
 		//$dsn = 'pgsql:dbname='.Constants::DB_NAME.
 		//' host='.Constants::DB_HOST.
 		//' port='.Constants::DB_PORT;
@@ -32,9 +32,9 @@
 		//var_dump($_REQUEST['update_animal']);
 		//$stmt_users= $dbh->prepare($sql);
 		//PDOのファンクションprepare()で準備をする
-		
+
 		//$stmt_users->execute();
-		
+
 		//$users = $stmt_users->fetchAll(PDO::FETCH_ASSOC);
 		//var_dump($users);
 		//exit;
@@ -43,7 +43,7 @@
 		preg_match($pattern,$_REQUEST['new_pass'],$matches);
 		//var_dump($pass);
 		//exit;
-		
+
 			if($_SERVER["REQUEST_METHOD"] != "POST"){
 			$msg = "";
 		}else{
@@ -68,7 +68,7 @@
 					Dao::db()->mod_exec($sql2,array($hash));
 					//$stmt = $dbh->prepare($sql2);
 					//PDOのファンクションprepare()で準備をする
-					
+
 					//$stmt->bindParam(1,$hash);
 					//上記のsql文の？を埋める
 					//$stmt->execute();

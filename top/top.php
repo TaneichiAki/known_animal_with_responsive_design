@@ -77,10 +77,10 @@
 		</div>
 			<h2>
 			<center>
-			<img src= "image/fusenn2.png"  class="fuwafuwa" alt = "風船2" title = "風船2" width = 20 height = 50 >
-			<img src= "image/inu.png"  class=""animal" alt = "犬" title = "犬" width = 60 height = 60 >知ってる動物一覧
-			<img src= "image/neko.png"  class="animal" alt = "猫" title = "猫" width = 60 height = 60 >
-			<img src= "image/fusenn3.png"  class="fuwafuwa" alt = "風船3" title = "風船3" width = 20 height = 50 >
+			<img src= "../image/fusenn2.png"  class="fuwafuwa" alt = "風船2" title = "風船2" width = 20 height = 50 >
+			<img src= "../image/inu.png"  class=""animal" alt = "犬" title = "犬" width = 60 height = 60 >知ってる動物一覧
+			<img src= "../image/neko.png"  class="animal" alt = "猫" title = "猫" width = 60 height = 60 >
+			<img src= "../image/fusenn3.png"  class="fuwafuwa" alt = "風船3" title = "風船3" width = 20 height = 50 >
 			</center>
 			</h2>
 				<center>

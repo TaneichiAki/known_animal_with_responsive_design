@@ -6,27 +6,27 @@
 <body>
 
 	<?php
-			require_once(__DIR__."/classes/Dao.php");
-			require_once(__DIR__.'/constants.php');
+			require_once(__DIR__."/../classes/Dao.php");
+			require_once(__DIR__.'/../classes/constants.php');
 			session_start();
-			
+
 			if( !empty($_GET['btn_logout']) ) {
 				unset($_SESSION['login']);
 			}
 
-			
+
 			if(! isset($_SESSION['login'])){
 				header("Location:".Constants::LOGIN_URL);
 				exit();
 			}
 			//セッションIDがセットされていなかったらログインページに戻る
-			
+
 			//$dsn = 'pgsql:dbname='.Constants::DB_NAME.
-			//' host='.Constants::DB_HOST. 
+			//' host='.Constants::DB_HOST.
 			//' port='.Constants::DB_PORT;
 			//$user = Constants::DB_USER;
 			//$password = Constants::DB_PASS;
-			
+
 			//$dbh = new PDO($dsn,$user,$password);
 			//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
 			$users_sql = 'select * from users where user_id = ?';
@@ -37,13 +37,13 @@
 			//$stmt->bindParam(1,$_SESSION['login']);
 			//$_REQUESTは$_POSTをGETでもPOSTでも見れるようにしたもの。
 			//上記のsql文の？を埋める
-			
+
 			//$stmt->execute();
 			//sqlを実行する。値は$stmtインスタンスの中に保管されている
-			
+
 			//$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			//fetchAll(PDO::FETCH_ASSOC)でsqlの結果の取り出し
-			
+
 	?>
 	<center>
 		<h1>ユーザー情報</h1>
@@ -133,5 +133,5 @@
 						 <button type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
 
 	</center>
-	
+
 </body>
