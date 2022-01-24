@@ -59,7 +59,6 @@
 						<div style="text-align:center;">
 						<?php
 						$filename = Constants::ANIMAL_PHOTO_SERVER.$animals['data'][$i]['no'].'_animal.jpg';
-						//__DIR__ .'/../animal_photo/'.$animals[$i]['no'].'_animal.jpg';
 						?>
 						<?php if(file_exists($filename)): ?>
 						<img src='/~testaki/animal_photo/<?php echo $animals['data'][$i]['no'] ?>_animal.jpg?<?php echo date("YmdHis");?>' width=auto height=80px />
@@ -71,25 +70,25 @@
 						<?= $animals['data'][$i]['name']; ?>
 						</td><td>
 						<?php
-						 echo $animals['data'][$i]['family'];
-						 ?>
-						 </td><td>
-						 <?php
-						 echo $animals['data'][$i]['features'];
-						 ?>
-						 </td><td>
-						 <?php
-						 echo $animals['data'][$i]['date'];
-						 ?>
-						 </td><td>
-						 <button type="submit" onclick="location.href='<?php echo Constants::EDIT_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>'">更新</button>
+						echo $animals['data'][$i]['family'];
+						?>
+						</td><td>
+						<?php
+						echo $animals['data'][$i]['features'];
+						?>
+						</td><td>
+						<?php
+						echo $animals['data'][$i]['date'];
+						?>
+						</td><td>
+						<button type="submit" onclick="location.href='<?php echo Constants::EDIT_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>'">更新</button>
 
-						 <button type="submit" onclick="window.open('<?php echo Constants::DELETE_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>','Delete','width=800,height=600')">削除</button>
-						 </td></tr>
-						 <?php endfor; ?>
-						</table>
-						<br>
-							 <button type=“button” onclick="location.href='<?php echo Constants::ENTRY_URL?>'">新規登録</button>
+						<button type="submit" onclick="window.open('<?php echo Constants::DELETE_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>','Delete','width=800,height=600')">削除</button>
+						</td></tr>
+						<?php endfor; ?>
+					</table>
+					<br>
+						<button type=“button” onclick="location.href='<?php echo Constants::ENTRY_URL?>'">新規登録</button>
 				</center>
 	</body>
 </html>
