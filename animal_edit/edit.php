@@ -10,33 +10,14 @@
 		require_once(__DIR__."/../classes/constants.php");
 		session_start();
 
-
+		//セッションIDがセットされていなかったらログインページに戻る
 		if(! isset($_SESSION['login'])){
 				header("Location:".Constants::LOGIN_URL);
 				exit();
 			}
-			//セッションIDがセットされていなかったらログインページに戻る
 
-		//$dsn = 'pgsql:dbname='.Constants::DB_NAME.
-		//' host='.Constants::DB_HOST.
-		//' port='.Constants::DB_PORT;
-		//$user = Constants::DB_USER;
-		//$password = Constants::DB_PASS;
-		//$dbh = new PDO($dsn,$user,$password);
-		//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
 		$sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
 		$users2 = Dao::db()->show_one_row($sql,array($_REQUEST['update_animal']));
-		//sql文の組み立て
-		//var_dump($_SERVER["REQUEST_METHOD"]);
-		//var_dump($_REQUEST['update_animal']);
-		//$stmt_animal = $dbh->prepare($sql);
-		//PDOのファンクションprepare()で準備をする
-		//$stmt_animal->bindParam(1,$_REQUEST['update_animal']);
-		//$_REQUESTは$_POSTをGETでもPOSTでも見れるようにしたもの。
-		//上記のsql文の？を埋める
-		//$stmt_animal->execute();
-
-		//$users2 = $stmt_animal->fetchAll(PDO::FETCH_ASSOC);
 
 		$memberid = $users2['data']['id'];
 		$select_animal= $users2['data']['name'];
@@ -57,38 +38,13 @@
 			}else{
 				try{
 					$sql2 = 'update animal set family = ?,features = ?,date = ? where no = ?';
-					//sql文の組み立て
 					$users = Dao::db()->mod_exec($sql2,array($_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$_REQUEST['update_animal']));
-					//$stmt = $dbh->prepare($sql2);
-					//PDOのファンクションprepare()で準備をする
-
-					//$stmt->bindParam(1,$_REQUEST['family']);
-					//上記のsql文の？を埋める
-
-					//$stmt->bindParam(2,$_REQUEST['features']);
-
-					//$stmt->bindParam(3,$_REQUEST['date']);
-
-					//$stmt->bindParam(4,$memberid);
-
-					//$stmt->bindParam(4,$_REQUEST['update_animal']);
-
-					//$stmt->execute();
-					//sqlを実行する。値は$stmtインスタンスの中に保管されている
-
-					//$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-					//fetchAll(PDO::FETCH_ASSOC)でsqlの結果の取り出し
 
 					move_uploaded_file($_FILES['image']['tmp_name'] ,Constants::ANIMAL_PHOTO_SERVER.$_REQUEST['update_animal'].'_animal.jpg' );
-
-					//var_dump($test);
-					//exit;
-
+					//下記ページに遷移する。
 					header ('Location:'.Constants::TOP_URL);
-					//上記ページに遷移する。
 					exit;
 
-					//$select_family  = "";
 				}catch (PDOException $e) {
 					//phpではない外部のアプリと連携するときはtry catchでエラーが起きた時の動きを定義した方が良い
 					print('Error:'.$e->getMessage());
@@ -108,8 +64,6 @@
 					echo "<center><div>".$msg."</div></center>";
 				}
 				?>
-				<!-$msgの値が空でなければ、$msgを出力する。->
-
 				<div>
 					<center>
 						<div>
