@@ -57,48 +57,48 @@
 			}
 		}
 	}
-	
+
 ?>
 <link rel="stylesheet" href="login.css" type="text/css">
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>ログイン</title>
-</head>
-<body>
-	<div>
-		<form method="post">
-			<center>
-				<h1>ログイン</h1>
-			</center>
-			<?php
-				if ($msg != ""){
-					echo "<center><div>".$msg."</div></center>";
-				}
-			?>
-			<div>
+	<head>
+		<meta charset="UTF-8">
+		<title>ログイン</title>
+	</head>
+	<body>
+		<div>
+			<form method="post">
 				<center>
-					<div>
-						<input type="id" name="username" placeholder="ユーザーID">
-					</div>
-					<br>
-					<div>
-						<input type="password" name="password" placeholder="Password">
-					</div>
+					<h1>ログイン</h1>
 				</center>
-			</div>
-			<center>
-				<button type="submit">ログイン</button>
-				<br>
-				<a href='<?php echo Constants::PASS_FORGET_URL?>' >パスワードを忘れた方はこちら</a>
-				<br>
-				<br>
-				<br>
-				<div>初めてご利用の方はこちら</div>
-				<button type="button" onclick="location.href='<?php echo Constants::NEW_ACCOUNT_URL?>'">新規アカウントを作成</button>
-			</center>
-		</form>
-	</div>
-</body>
+				<?php
+					if ($msg != ""){
+						echo "<center><div>".$msg."</div></center>";
+					}
+				?>
+				<div>
+					<center>
+						<div>
+							<input type="id" name="username" placeholder="ユーザーID">
+						</div>
+						<br>
+						<div>
+							<input type="password" name="password" placeholder="Password">
+						</div>
+					</center>
+				</div>
+				<center>
+					<button type="submit">ログイン</button>
+					<br>
+					<a href='<?php echo Constants::PASS_FORGET_URL?>' >パスワードを忘れた方はこちら</a>
+					<br>
+					<br>
+					<br>
+					<div>初めてご利用の方はこちら</div>
+					<button type="button" onclick="location.href='<?php echo Constants::NEW_ACCOUNT_URL?>'">新規アカウントを作成</button>
+				</center>
+			</form>
+		</div>
+	</body>
 </html>
