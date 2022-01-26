@@ -17,7 +17,6 @@ class Constants {
 	const LOGPATH = "/home/testaki/logs/knownanimal.log";
 
 
-
 	//login.phpのURL
 	const LOGIN_URL = Self::ROOT_URL."/known_animal/login/login.php";
 	//top.phpのURL

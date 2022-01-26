@@ -25,13 +25,7 @@
 		//PDO($dsn,$user,$password)はPHPがあらかじめ用意しているコンストラクタでデータベースへの接続の確立
 		$sql = "select * from users where user_id = ?";
 		$users = Dao::db()->show_one_row($sql,array($id));
-		//sql文の組み立て
-		//var_dump($sql);
-		//exit;
-		//var_dump($_SERVER["REQUEST_METHOD"]);
-		//var_dump($_REQUEST['update_animal']);
-		//$stmt_users= $dbh->prepare($sql);
-		//PDOのファンクションprepare()で準備をする
+
 
 		//$stmt_users->execute();
 
