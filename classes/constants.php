@@ -31,9 +31,9 @@ class Constants {
 	//entry.phpのURL
 	const ENTRY_URL = Self::ROOT_URL."/known_animal/animal_entry/entry.php";
 	//pass_change.phpのURL
-	const PASS_CHANGE_URL = Self::ROOT_URL."/known_animal/pass_change/pass_change.php";
+	const PASS_CHANGE_URL = Self::ROOT_URL."/known_animal/user_edit/pass_change.php";
 	//pass_change_done.phpのURL
-	const PASS_CHANGE_DONE_URL = Self::ROOT_URL."/known_animal/pass_change/pass_change_done.php";
+	const PASS_CHANGE_DONE_URL = Self::ROOT_URL."/known_animal/user_edit/pass_change_done.php";
 	//user_edit.phpのURL
 	const USER_EDIT_URL = Self::ROOT_URL."/known_animal/user_edit/user_edit.php";
 	//last_name_edit.phpのURL
