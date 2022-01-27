@@ -20,7 +20,7 @@
 		/*
 		*動物の名称
 		*/
-		$select_animal= $info['data']['name'];
+		$select_animal=$info['data']['name'];
 		/*
 		*動物の科目
 		*/
