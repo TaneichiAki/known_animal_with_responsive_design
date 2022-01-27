@@ -7,6 +7,7 @@
 		header("Location:".Constants::LOGIN_URL);
 		exit();
 	}
+	$msg = "";
 	/*
 	*ユーザーID
 	*/
@@ -23,22 +24,30 @@
 	$pattern = '/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/';
 	preg_match($pattern,$_REQUEST['new_pass'],$matches);
 
+	function post() {
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			$GLOBALS['msg'] = pass_change();
+		}
+	}
 
-	if($_SERVER["REQUEST_METHOD"] != "POST"){
-		$msg = "";
-	}else{
+	function pass_change() {
 		if($_REQUEST['current_pass'] == ""){
-			$msg = "現在のパスワードを入力してください。";
-		}elseif($_REQUEST['new_pass'] == ""){
-			$msg = "新しいパスワードを入力してください。";
-		}elseif($_REQUEST['re_new_pass'] == ""){
-			$msg = "新しいパスワードを再度入力してください。";
-		}elseif(password_verify($_REQUEST['current_pass'], $pass) == false){
-			$msg = "現在のパスワードが正しくありません。";
-		}elseif($_REQUEST['new_pass'] != $_REQUEST['re_new_pass'] ){
-			$msg = "１回目と２回目で新しいパスワードが一致しません。";
-		}elseif($matches == false){
-			$msg = "半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上のパスワードにしてください。";
+			return "現在のパスワードを入力してください。";
+		}
+		if($_REQUEST['new_pass'] == ""){
+			return  "新しいパスワードを入力してください。";
+		}
+		if($_REQUEST['re_new_pass'] == ""){
+			return "新しいパスワードを再度入力してください。";
+		}
+		if(password_verify($_REQUEST['current_pass'], $pass) == false){
+			return "現在のパスワードが正しくありません。";
+		}
+		if($_REQUEST['new_pass'] != $_REQUEST['re_new_pass'] ){
+			return "１回目と２回目で新しいパスワードが一致しません。";
+		}
+		if($matches == false){
+			return "半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上のパスワードにしてください。";
 		}else{
 			try{
 				$sql2 = "update users set password = ? where user_id = '".$id."'";
