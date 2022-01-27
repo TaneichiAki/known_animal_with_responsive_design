@@ -35,14 +35,6 @@
 		$select_date=$info['data']['date'];
 	}
 	/*
-	*POST時の更新処理
-	*/
-	function post() {
-		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$GLOBALS['msg'] = update();
-		}
-	}
-	/*
 	*動物データの更新処理
 	*/
 	function update() {
@@ -71,6 +63,14 @@
 		}
 	}
 
+	/*
+	*POST時の更新処理
+	*/
+	function post() {
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+			$GLOBALS['msg'] = update();
+		}
+	}
 	/*
 	*データ抽出実行
 	*/

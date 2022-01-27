@@ -23,13 +23,9 @@
 	//新しいパスワードが$patternの正規表現パターンにマッチしているか判定
 	$pattern = '/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/';
 	preg_match($pattern,$_REQUEST['new_pass'],$matches);
-
-	function post() {
-		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$GLOBALS['msg'] = pass_change();
-		}
-	}
-
+	/*
+	*パスワード変更ファンクション
+	*/
 	function pass_change() {
 		if($_REQUEST['current_pass'] == ""){
 			return "現在のパスワードを入力してください。";
@@ -48,7 +44,7 @@
 		}
 		if($matches == false){
 			return "半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上のパスワードにしてください。";
-		}else{
+		}
 			try{
 				$sql2 = "update users set password = ? where user_id = '".$id."'";
 
@@ -62,7 +58,19 @@
 				die();
 			}
 		}
-	}
+		/*
+		*POST時の処理
+		*/
+		function post() {
+			if($_SERVER["REQUEST_METHOD"] == "POST"){
+				$GLOBALS['msg'] = pass_change();
+			}
+		}
+		/*
+		*POST時処理実行
+		*/
+		post();
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
