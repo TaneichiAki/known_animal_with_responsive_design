@@ -12,14 +12,13 @@
 	*ユーザーID
 	*/
 	$id = $_SESSION['login'];
-
 	//ログインユーザーの情報を抽出
 	$sql = "select * from users where user_id = ?";
-	$users = Dao::db()->show_one_row($sql,array($id));
+	$user = Dao::db()->show_one_row($sql,array($id));
 	/*
 	*パスワード
 	*/
-	$pass = $users['data']['password'];
+	$pass = $user['data']['password'];
 	//新しいパスワードが$patternの正規表現パターンにマッチしているか判定
 	$pattern = '/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,100}+\z/';
 	preg_match($pattern,$_REQUEST['new_pass'],$matches);
@@ -27,6 +26,10 @@
 	*パスワード変更ファンクション
 	*/
 	function pass_change() {
+		//ファンクション外部の変数（グローバル変数）にアクセスするための定義
+		global $pass;
+		global $matches;
+		
 		if($_REQUEST['current_pass'] == ""){
 			return "現在のパスワードを入力してください。";
 		}
@@ -47,7 +50,7 @@
 		}
 			try{
 				$sql2 = "update users set password = ? where user_id = '".$id."'";
-
+				//新しいパスワードをハッシュ化してデータベースに更新登録
 				$hash = password_hash($_REQUEST['new_pass'], PASSWORD_DEFAULT);
 				Dao::db()->mod_exec($sql2,array($hash));
 				//下記ページに遷移する
@@ -70,7 +73,6 @@
 		*POST時処理実行
 		*/
 		post();
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
