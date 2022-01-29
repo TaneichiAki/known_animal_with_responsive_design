@@ -12,32 +12,27 @@
 			exit();
 		}
 	/*
-	*top.phpから選択した（No.で情報を取得）更新対象の動物データを抽出するファンクション
+	*top.phpから選択した（No.で情報を取得）更新対象の動物データを抽出する
 	*/
-	function data_extraction() {
-		$sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
-		$info = Dao::db()->show_one_row($sql,array($_REQUEST['update_animal']));
-		/*
-		*動物の名称
-		*/
-		global $select_animal;
-		$select_animal=$info['data']['name'];
-		/*
-		*動物の科目
-		*/
-		global $select_family;
-		$select_family=$info['data']['family'];
-		/*
-		*動物の特徴
-		*/
-		global $select_features;
-		$select_features=$info['data']['features'];
-		/*
-		*知った日
-		*/
-		global $select_date;
-		$select_date=$info['data']['date'];
-	}
+	$sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
+	$info = Dao::db()->show_one_row($sql,array($_REQUEST['update_animal']));
+	/*
+	*動物の名称
+	*/
+	$select_animal=$info['data']['name'];
+	/*
+	*動物の科目
+	*/
+	$select_family=$info['data']['family'];
+	/*
+	*動物の特徴
+	*/
+	$select_features=$info['data']['features'];
+	/*
+	*知った日
+	*/
+	$select_date=$info['data']['date'];
+
 	/*
 	*動物データの更新処理ファンクション
 	*/
@@ -66,19 +61,14 @@
 			die();
 		}
 	}
-
 	/*
-	*POST時の更新処理ファンクション
+	*POST時のファンクション
 	*/
 	function post() {
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$GLOBALS['msg'] = update();
 		}
 	}
-	/*
-	*データ抽出実行
-	*/
-	data_extraction();
 	/*
 	*更新処理実行（POST時のみ）
 	*/
