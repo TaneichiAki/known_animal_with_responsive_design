@@ -12,7 +12,7 @@
 			exit();
 		}
 	/*
-	*top.phpから選択した（noで情報を取得）更新対象の動物データ抽出
+	*top.phpから選択した（No.で情報を取得）更新対象の動物データを抽出するファンクション
 	*/
 	function data_extraction() {
 		$sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
@@ -20,22 +20,26 @@
 		/*
 		*動物の名称
 		*/
+		global $select_animal;
 		$select_animal=$info['data']['name'];
 		/*
 		*動物の科目
 		*/
+		global $select_family;
 		$select_family=$info['data']['family'];
 		/*
 		*動物の特徴
 		*/
+		global $select_features;
 		$select_features=$info['data']['features'];
 		/*
 		*知った日
 		*/
+		global $select_date;
 		$select_date=$info['data']['date'];
 	}
 	/*
-	*動物データの更新処理
+	*動物データの更新処理ファンクション
 	*/
 	function update() {
 	if($_REQUEST['family'] == ""){
@@ -64,7 +68,7 @@
 	}
 
 	/*
-	*POST時の更新処理
+	*POST時の更新処理ファンクション
 	*/
 	function post() {
 		if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -79,6 +83,7 @@
 	*更新処理実行（POST時のみ）
 	*/
 	post();
+
 ?>
 <!DOCTYPE html>
 <html lang=“ja”>
