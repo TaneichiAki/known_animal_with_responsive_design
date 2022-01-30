@@ -1,15 +1,16 @@
 <?php
 	require_once(__DIR__."/../classes/Dao.php");
 	require_once(__DIR__."/../classes/constants.php");
-	/*
+	/**
 	*グローバル変数定義
 	*/
 	$msg = "";
+	$select_no = "";
 	$select_animal = "";
 	$select_family = "";
 	$select_features = "";
 	$select_date = "";
-	/*
+	/**
 	*POST時処理
 	*/
 	function post() {
@@ -35,7 +36,7 @@
 		$users = Dao::db()->mod_exec($update_sql,array($_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$_REQUEST['update_animal']));
 		move_uploaded_file($_FILES['image']['tmp_name'] ,Constants::ANIMAL_PHOTO_SERVER.$_REQUEST['update_animal'].'_animal.jpg' );
 	}
-	/*
+	/**
 	*メイン処理
 	*/
 	function main() {
@@ -49,6 +50,8 @@
 			//top.phpから選択した（No.で情報を取得）更新対象の動物データを抽出
 			$select_sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
 			$info = Dao::db()->show_one_row($select_sql,array($_REQUEST['update_animal']));
+			//動物の登録番号
+			$GLOBALS['select_no']=$info['data']['no'];
 			//動物の名称
 			$GLOBALS['select_animal']=$info['data']['name'];
 			//動物の科目
@@ -66,7 +69,7 @@
 			die();
 		}
 	}
-	/*
+	/**
 	*メイン処理実行
 	*/
 	main();
@@ -114,7 +117,7 @@
 				</div>
 					<center>
 						<input type="submit" value="更新">
-						<input type = "hidden" name = "update_animal"  value = "<?= $info['data']['no'] ?>">
+						<input type = "hidden" name = "update_animal"  value = "<?= $select_no ?>">
 						<br>
 						<button type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
 					</center>
