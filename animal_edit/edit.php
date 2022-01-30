@@ -34,6 +34,7 @@
 	function update(){
 		$update_sql = 'update animal set family = ?,features = ?,date = ? where no = ?';
 		$users = Dao::db()->mod_exec($update_sql,array($_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$_REQUEST['update_animal']));
+
 		move_uploaded_file($_FILES['image']['tmp_name'] ,Constants::ANIMAL_PHOTO_SERVER.$_REQUEST['update_animal'].'_animal.jpg' );
 	}
 	/**
@@ -98,15 +99,15 @@
 						</div>
 
 						<div>
-							<input type="family" name="family" placeholder="何科" value = "<?php echo $select_family ?>" >
+							<input type="family" name="family" placeholder="何科" value="<?php echo $select_family ?>" >
 						</div>
 
 						<div>
-							<input type="features" name="features" placeholder="特徴" value = "<?php echo $select_features ?>" >
+							<input type="features" name="features" placeholder="特徴" value="<?php echo $select_features ?>" >
 						</div>
 
 						<div>
-							<input type="date" name="date" placeholder="知った日" value = "<?php echo $select_date ?>" >
+							<input type="date" name="date" placeholder="知った日" value="<?php echo $select_date ?>" >
 						</div>
 						<div>
 							<input type="file" name="image">
@@ -115,12 +116,12 @@
 						</div>
 					</center>
 				</div>
-					<center>
-						<input type="submit" value="更新">
-						<input type = "hidden" name = "update_animal"  value = "<?= $select_no ?>">
-						<br>
-						<button type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
-					</center>
+				<center>
+					<input type="submit" value="更新">
+					<input type = "hidden" name = "update_animal"  value = "<?= $select_no ?>">
+					<br>
+					<button type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+				</center>
 		</form>
 	</div>
 </body>
