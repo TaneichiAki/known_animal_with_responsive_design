@@ -1,21 +1,19 @@
 <?php
 	require_once(__DIR__."/../classes/Dao.php");
 	require_once(__DIR__."/../classes/constants.php");
-	session_start();
 	/*
-	*メッセージ
+	*グローバル変数定義
 	*/
 	$msg = "";
-	//セッションIDがセットされていなかったらログインページに戻る
-	if(! isset($_SESSION['login'])){
-			header("Location:".Constants::LOGIN_URL);
-			exit();
-		}
+	$select_animal = "";
+	$select_family = "";
+	$select_features = "";
+	$select_date = "";
 	/*
 	*top.phpから選択した（No.で情報を取得）更新対象の動物データを抽出する
 	*/
-	$sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
-	$info = Dao::db()->show_one_row($sql,array($_REQUEST['update_animal']));
+	$select_sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
+	$info = Dao::db()->show_one_row($select_sql,array($_REQUEST['update_animal']));
 	/*
 	*動物の名称
 	*/
@@ -32,26 +30,21 @@
 	*知った日
 	*/
 	$select_date=$info['data']['date'];
-
 	/*
-	*動物データの更新処理ファンクション
+	*POST時処理
 	*/
-	function update() {
-	if($_REQUEST['family'] == ""){
-		return “何科か入力してください。“;
-	}
-	if($_REQUEST['features'] == ""){
-		return “特徴を入力してください。“;
-	}
-	if($_REQUEST['date'] == ""){
-		return “知った日を入力してください。“;
-	}
+	function post() {
+		if($_REQUEST['family'] == ""){
+			return “何科か入力してください。“;
+		}
+		if($_REQUEST['features'] == ""){
+			return “特徴を入力してください。“;
+		}
+		if($_REQUEST['date'] == ""){
+			return “知った日を入力してください。“;
+		}
 		try{
-			//動物データを指定の内容に更新
-			$sql2 = 'update animal set family = ?,features = ?,date = ? where no = ?';
-			$users = Dao::db()->mod_exec($sql2,array($_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$_REQUEST['update_animal']));
-
-			move_uploaded_file($_FILES['image']['tmp_name'] ,Constants::ANIMAL_PHOTO_SERVER.$_REQUEST['update_animal'].'_animal.jpg' );
+			update();
 			//下記TOPページに遷移する。
 			header ('Location:'.Constants::TOP_URL);
 			exit;
@@ -61,18 +54,36 @@
 			die();
 		}
 	}
+
+	function update(){
+		//動物データを指定の内容に更新
+		$update_sql = 'update animal set family = ?,features = ?,date = ? where no = ?';
+		$users = Dao::db()->mod_exec($update_sql,array($_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$_REQUEST['update_animal']));
+		move_uploaded_file($_FILES['image']['tmp_name'] ,Constants::ANIMAL_PHOTO_SERVER.$_REQUEST['update_animal'].'_animal.jpg' );
+	}
 	/*
-	*POST時のファンクション
+	*メイン処理
 	*/
-	function post() {
-		if($_SERVER["REQUEST_METHOD"] == "POST"){
-			$GLOBALS['msg'] = update();
+	function main() {
+		session_start();
+		//セッションIDがセットされていなかったらログインページに戻る
+		if(! isset($_SESSION['login'])){
+			header("Location:".Constants::LOGIN_URL);
+			exit();
+		}
+		try{
+			if($_SERVER["REQUEST_METHOD"] == "POST"){
+				$GLOBALS['msg'] = post();
+			}
+		}catch(PDOException $e) {
+			print('Error:'.$e->getMessage());
+			die();
 		}
 	}
 	/*
-	*更新処理実行（POST時のみ）
+	*メイン処理実行
 	*/
-	post();
+	main();
 
 ?>
 <!DOCTYPE html>
