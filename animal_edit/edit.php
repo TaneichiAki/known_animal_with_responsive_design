@@ -10,27 +10,6 @@
 	$select_features = "";
 	$select_date = "";
 	/*
-	*top.phpから選択した（No.で情報を取得）更新対象の動物データを抽出する
-	*/
-	$select_sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
-	$info = Dao::db()->show_one_row($select_sql,array($_REQUEST['update_animal']));
-	/*
-	*動物の名称
-	*/
-	$select_animal=$info['data']['name'];
-	/*
-	*動物の科目
-	*/
-	$select_family=$info['data']['family'];
-	/*
-	*動物の特徴
-	*/
-	$select_features=$info['data']['features'];
-	/*
-	*知った日
-	*/
-	$select_date=$info['data']['date'];
-	/*
 	*POST時処理
 	*/
 	function post() {
@@ -43,20 +22,15 @@
 		if($_REQUEST['date'] == ""){
 			return “知った日を入力してください。“;
 		}
-		try{
-			update();
-			//下記TOPページに遷移する。
-			header ('Location:'.Constants::TOP_URL);
-			exit;
-		//例外バグ検出時に下記を実行（外部のアプリと連携するときによく使う）
-		}catch (PDOException $e) {
-			print('Error:'.$e->getMessage());
-			die();
-		}
+		update();
+		//下記TOPページに遷移する。
+		header ('Location:'.Constants::TOP_URL);
+		exit;
 	}
-
+	/**
+	*animalデータ更新処理
+	*/
 	function update(){
-		//動物データを指定の内容に更新
 		$update_sql = 'update animal set family = ?,features = ?,date = ? where no = ?';
 		$users = Dao::db()->mod_exec($update_sql,array($_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$_REQUEST['update_animal']));
 		move_uploaded_file($_FILES['image']['tmp_name'] ,Constants::ANIMAL_PHOTO_SERVER.$_REQUEST['update_animal'].'_animal.jpg' );
@@ -72,9 +46,21 @@
 			exit();
 		}
 		try{
+			//top.phpから選択した（No.で情報を取得）更新対象の動物データを抽出
+			$select_sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
+			$info = Dao::db()->show_one_row($select_sql,array($_REQUEST['update_animal']));
+			//動物の名称
+			$GLOBALS['select_animal']=$info['data']['name'];
+			//動物の科目
+			$GLOBALS['select_family']=$info['data']['family'];
+			//動物の特徴
+			$GLOBALS['select_features']=$info['data']['features'];
+			//知った日
+			$GLOBALS['select_date']=$info['data']['date'];
 			if($_SERVER["REQUEST_METHOD"] == "POST"){
 				$GLOBALS['msg'] = post();
 			}
+		//例外バグ検出時に下記を実行（外部のアプリと連携するときによく使う）
 		}catch(PDOException $e) {
 			print('Error:'.$e->getMessage());
 			die();
@@ -84,7 +70,6 @@
 	*メイン処理実行
 	*/
 	main();
-
 ?>
 <!DOCTYPE html>
 <html lang=“ja”>
