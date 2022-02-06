@@ -6,20 +6,24 @@
 		if( !empty($_GET['btn_logout']) ) {
 			unset($_SESSION['login']);
 		}
-
 		//セッションIDがセットされていなかったらログインページに戻る
 		if(! isset($_SESSION['login'])){
 			header("Location:".Constants::LOGIN_URL);
 			exit();
 		}
-		//データベースに接続し、テーブルに登録されているユーザーの知ってる動物データを抽出
-		$animal_sql = 'select * from users inner join animal on users.id = animal.memberid  where user_id = ?';
-		$animals = Dao::db()->show_any_rows($animal_sql,array($_SESSION['login']));
-		//登録されている動物件数
-		$count = Dao::db()->count_row($animal_sql,array($_SESSION['login']));
-		//ログインユーザー情報
-		$users_sql = 'select * from users where user_id = ?' ;
-		$users = Dao::db()->show_one_row($users_sql,array($_SESSION['login']));
+		try{
+			//データベースに接続し、テーブルに登録されているユーザーの知ってる動物データを抽出
+			$animal_sql = 'select * from users inner join animal on users.id = animal.memberid  where user_id = ?';
+			$animals = Dao::db()->show_any_rows($animal_sql,array($_SESSION['login']));
+			//登録されている動物件数
+			$count = Dao::db()->count_row($animal_sql,array($_SESSION['login']));
+			//ログインユーザー情報
+			$users_sql = 'select * from users where user_id = ?' ;
+			$users = Dao::db()->show_one_row($users_sql,array($_SESSION['login']));
+		}catch(PDOException $e){
+			print('Error:'.$e->getMessage());
+			die();
+		}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -79,7 +83,7 @@
 					</td><td>
 					<button type="submit" onclick="location.href='<?php echo Constants::EDIT_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>'">更新</button>
 
-					<button type="submit" onclick="window.open('<?php echo Constants::DELETE_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>','Delete','width=800,height=600')">削除</button>
+					<button type="submit" onclick="window.open('<?php echo Constants::DELETE_URL?>?delete_animal=<?php echo $animals['data'][$i]['no'] ?>','Delete','width=800,height=600')">削除</button>
 					</td></tr>
 					<?php endfor; ?>
 				</table>
