@@ -17,7 +17,7 @@
 		$delete_sql = 'delete from animal where no = ?';
 		$delete_animal = Dao::db()->mod_exec($delete_sql,array($_REQUEST['delete_exec_animal']));
 		//下記ページに遷移する
-		header ('Location:'.Constants:: DELETE2_URL);
+		header ('Location:'.Constants:: DELETE_DONE_URL);
 		exit;
 	}
 	/*

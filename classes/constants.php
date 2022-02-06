@@ -23,7 +23,7 @@ class Constants {
 	//delete.phpのURL
 	const DELETE_URL = Self::ROOT_URL."/known_animal/delete/delete.php";
 	//delete2.phpのURL
-	const DELETE2_URL = Self::ROOT_URL."/known_animal/delete/delete2.php";
+	const DELETE_DONE_URL = Self::ROOT_URL."/known_animal/delete/delete_done.php";
 	//edit.phpのURL
 	const EDIT_URL = Self::ROOT_URL."/known_animal/animal_edit/edit.php";
 	//entry.phpのURL
