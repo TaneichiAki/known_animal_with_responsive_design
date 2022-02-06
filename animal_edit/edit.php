@@ -13,7 +13,7 @@
 	/**
 	*POST時処理
 	*/
-	function post() {
+	function post(){
 		if($_REQUEST['family'] == ""){
 			return “何科か入力してください。“;
 		}
@@ -40,7 +40,7 @@
 	/**
 	*メイン処理
 	*/
-	function main() {
+	function main(){
 		session_start();
 		//セッションIDがセットされていなかったらログインページに戻る
 		if(! isset($_SESSION['login'])){
@@ -65,7 +65,7 @@
 				$GLOBALS['msg'] = post();
 			}
 		//例外バグ検出時に下記を実行（外部のアプリと連携するときによく使う）
-		}catch(PDOException $e) {
+		}catch(PDOException $e){
 			print('Error:'.$e->getMessage());
 			die();
 		}
@@ -77,35 +77,30 @@
 ?>
 <!DOCTYPE html>
 <html lang=“ja”>
-<head>
-	<meta charset="utf-8">
-	<title>更新</title>
-</head>
-<body>
-	<div>
-		<form method="post" enctype="multipart/form-data">
-			<center>
-				<h1>データの更新</h1>
-			</center>
-				<?php
-				if ($msg != ""){
-					echo "<center><div>".$msg."</div></center>";
-				}
-				?>
-				<div>
-					<center>
+	<head>
+		<meta charset="utf-8">
+		<title>更新</title>
+	</head>
+	<body>
+		<div>
+			<form method="post" enctype="multipart/form-data">
+				<center>
+					<h1>データの更新</h1>
+					<?php
+					if ($msg != ""){
+						echo "<center><div>".$msg."</div></center>";
+					}
+					?>
+					<div>
 						<div>
 							<?php echo "対象の動物：".$select_animal ?>
 						</div>
-
 						<div>
 							<input type="family" name="family" placeholder="何科" value="<?php echo $select_family ?>" >
 						</div>
-
 						<div>
 							<input type="features" name="features" placeholder="特徴" value="<?php echo $select_features ?>" >
 						</div>
-
 						<div>
 							<input type="date" name="date" placeholder="知った日" value="<?php echo $select_date ?>" >
 						</div>
@@ -114,14 +109,13 @@
 							<br>
 							<br>
 						</div>
-					</center>
-				</div>
-				<center>
+					</div>
 					<input type="submit" value="更新">
 					<input type = "hidden" name = "update_animal"  value = "<?= $select_no ?>">
 					<br>
 					<button type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
 				</center>
-		</form>
-	</div>
-</body>
+			</form>
+		</div>
+	</body>
+</html>

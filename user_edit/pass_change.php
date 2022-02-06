@@ -77,31 +77,32 @@
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="utf-8">
-</head>
-<body>
-<form method="post" enctype="multipart/form-data">
-	<center>
-		<h1>パスワード変更</h1>
-			<?php
-			if ($msg != ""){
-				echo "<center><div>".$msg."</div></center>";
-			}
-			?>
-		<div>
-			<p>現在のパスワード: <input type="password" name="current_pass"></p>
-		</div>
-		<div>
-			<p>新しいパスワード: <input type="password" name="new_pass"></p>
-		</div>
-		<div>
-			<p>新しいパスワード: <input type="password" name="re_new_pass" placeholder="もう一度入力してください"></p>
-			<p>※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</p>
-		</div>
-		<input type="submit" value="変更">
-		<br>
-		<button type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
-	</center>
-</form>
-</body>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<form method="post" enctype="multipart/form-data">
+			<center>
+				<h1>パスワード変更</h1>
+					<?php
+					if ($msg != ""){
+						echo "<center><div>".$msg."</div></center>";
+					}
+					?>
+				<div>
+					<p>現在のパスワード: <input type="password" name="current_pass"></p>
+				</div>
+				<div>
+					<p>新しいパスワード: <input type="password" name="new_pass"></p>
+				</div>
+				<div>
+					<p>新しいパスワード: <input type="password" name="re_new_pass" placeholder="もう一度入力してください"></p>
+					<p>※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</p>
+				</div>
+				<input type="submit" value="変更">
+				<br>
+				<button type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
+			</center>
+		</form>
+	</body>
+</html>
