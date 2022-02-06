@@ -36,6 +36,7 @@
 		if($_REQUEST['date'] == ""){
 			return "知った日を入力してください。";
 		}
+		//ENTRY処理実行
 		entry();
 		//下記ページに遷移する。
 		header ('Location:'.Constants::TOP_URL);

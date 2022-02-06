@@ -5,10 +5,20 @@
 	*グローバル変数定義
 	*/
 	$msg = "";
+	$id = "";
+	/**
+	*パスワード更新処理
+	*/
+	function pass_update(){
+		$update_sql = "update users set password = ? where user_id = '".$GLOBALS['id']."'";
+		//新しいパスワードをハッシュ化してデータベースに更新登録
+		$hash = password_hash($_REQUEST['new_pass'], PASSWORD_DEFAULT);
+		Dao::db()->mod_exec($update_sql,array($hash));
+	}
 	/**
 	*POST時処理
 	*/
-	function post() {
+	function post(){
 		if($_REQUEST['current_pass'] == ""){
 			return "現在のパスワードを入力してください。";
 		}
@@ -19,10 +29,10 @@
 			return "新しいパスワードを再度入力してください。";
 		}
 		//ユーザーID
-		$id = $_SESSION['login'];
+		$GLOBALS['id']= $_SESSION['login'];
 		//ログインユーザーの情報を抽出
 		$select_sql = "select * from users where user_id = ?";
-		$user = Dao::db()->show_one_row($select_sql,array($id));
+		$user = Dao::db()->show_one_row($select_sql,array($GLOBALS['id']));
 		//パスワード
 		$pass = $user['data']['password'];
 		if(password_verify($_REQUEST['current_pass'], $pass) == false){
@@ -41,15 +51,6 @@
 		//下記ページに遷移する
 		header ('Location:'.Constants::PASS_CHANGE_DONE_URL);
 		exit;
-	}
-	/**
-	*パスワード更新処理
-	*/
-	function pass_update(){
-		$update_sql = "update users set password = ? where user_id = '".$id."'";
-		//新しいパスワードをハッシュ化してデータベースに更新登録
-		$hash = password_hash($_REQUEST['new_pass'], PASSWORD_DEFAULT);
-		Dao::db()->mod_exec($update_sql,array($hash));
 	}
 	/**
 	*メイン処理

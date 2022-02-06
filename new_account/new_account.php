@@ -85,6 +85,7 @@
 			try{
 				$GLOBALS['msg'] = valid($_POST);
 				if($GLOBALS['msg']==""){
+					//新アカウント作成実行
 					new_account();
 				}
 			}catch (PDOException $e){
