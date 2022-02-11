@@ -1,12 +1,20 @@
 <?php
 	require_once(__DIR__."/../classes/constants.php");
-	session_start();
-
-	//セッションIDがセットされていなかったらログインページに戻る
-	if(! isset($_SESSION['login'])){
-		header("Location:".Constants::LOGIN_URL);
-		exit();
+	/*
+	*メイン処理
+	*/
+	function main(){
+		session_start();
+		//セッションIDがセットされていなかったらログインページに戻る
+		if(! isset($_SESSION['login'])){
+			header("Location:".Constants::LOGIN_URL);
+			exit();
+		}
 	}
+	/**
+	*メイン処理実行
+	*/
+	main();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
