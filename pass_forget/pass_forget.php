@@ -61,9 +61,9 @@
 		send_mail();
 	}
 	/*
-	*エラーチェック処理
+	*POST時処理
 	*/
-	function check(){
+	function post(){
 		$select_sql = 'select * from users where mail = ?';
 		$used_mail = Dao::db()->show_one_row($select_sql,array($_REQUEST['mail']));
 		if($_REQUEST['mail'] == ""){
@@ -81,7 +81,7 @@
 	function main(){
 		if($_SERVER["REQUEST_METHOD"]== "POST"){
 			try{
-				$GLOBALS['msg'] = check();
+				$GLOBALS['msg'] = post();
 			}catch (PDOException $e){
 				//phpではない外部のアプリと連携するときはtry catchでエラーが起きた時の動きを定義した方が良い
 				print('Error:'.$e->getMessage());
