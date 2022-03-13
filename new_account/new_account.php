@@ -104,58 +104,66 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
+		<!-- Required meta tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<center>
-			<form method="post" enctype="multipart/form-data">
-				<h1>新規アカウント作成画面</h1>
-				<?php
-					if ($msg != ""){
-						echo "<center><div>".$msg."</div></center>";
-					}
-				?>
-				<div>
-					<input type="text" name="last_name" placeholder="姓">
-				</div>
-				<div>
-					<input type="text" name="first_name" placeholder="名">
-				</div>
-				<div>
-					<input type="text" name="user_id" placeholder="ユーザーID">
-					<!-条件：他の人が使っているユーザー名でないこと->
-				</div>
-				<div>
-					<input type="text" name="department" placeholder="部署名">
-				</div>
-				<div>
-					<input type="text" name="post" placeholder="役職名">
-				</div>
-				<div>
-					<input type="date" name="birth" placeholder="生年月日">
-				</div>
-				<div>
-					<input type="radio" name="gender" value="male">男性
-					<input type="radio" name="gender" value="female">女性
-				</div>
-				<div>
-					<input type="email" name="mail" placeholder="メールアドレス">
-				</div>
-				<div>
-					<input type="password" name="pass" placeholder="パスワード">
-				</div>
-				<div>
-					<input type="password" name="re-pass" placeholder="パスワード再入力">
-				</div>
-				<div style="color:#696969">※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</div>
-				<br>
-				<input type="submit" value="アカウントを作成する">
-				<br>
-				<br>
-				<div style="padding: 10px 3px; margin: 5px 500px; border: 1px dashed #333333; border-radius: 10px;">
-					<p>アカウントをお持ちの方はこちら</p>
-					<button type="button" onclick="location.href='<?php echo Constants::LOGIN_URL?>'"> 今すぐログイン</button>
+			<form class="border offset-4 col-4 rounded bg-light mt-5 mb-5" method="post" enctype="multipart/form-data">
+				<div class="container-fluid">
+					<div class="row">
+						<h5 class="offset-md-2 col-md-8 text-center mt-4">新規アカウント作成画面</h5>
+						<?php
+							if ($msg != ""){
+								echo "<center><div>".$msg."</div></center>";
+							}
+						?>
+						<div class="offset-md-2 col-md-8 text-center mt-4">
+							<input type="text" class="form-control" name="last_name" placeholder="姓">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="text" class="form-control" name="first_name" placeholder="名">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="text" class="form-control" name="user_id" placeholder="ユーザーID">
+							<!-条件：他の人が使っているユーザー名でないこと->
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="text" class="form-control" name="department" placeholder="部署名">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="text" class="form-control" name="post" placeholder="役職名">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="date" class="form-control" name="birth" placeholder="生年月日">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="radio" name="gender" value="male">男性
+							<input type="radio" name="gender" value="female">女性
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="email" class="form-control" name="mail" placeholder="メールアドレス">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="password" class="form-control" name="pass" placeholder="パスワード">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+							<input type="password" class="form-control" name="re-pass" placeholder="パスワード再入力">
+						</div>
+						<div style="color:#696969">※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</div>
+						<div class="offset-md-2 col-md-8 text-center mt-2">
+						<input type="submit" class="btn btn-primary btn-sm mb-3" value="アカウントを作成する">
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mt-4">
+							<p>アカウントをお持ちの方はこちら</p>
+							<button type="button" class="btn btn-primary btn-sm mt-2 mb-3" onclick="location.href='<?php echo Constants::LOGIN_URL?>'"> 今すぐログイン</button>
+						</div>
+					</div>
+					</div>
 				</div>
 			</form>
-		</center>
 	</body>
 </html>

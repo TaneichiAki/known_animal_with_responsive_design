@@ -84,10 +84,10 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="offset-md-2 col-md-8 text-center mt-4">
-									<input type="id" class="form-control" name="username" placeholder="ユーザーID">
+									<input type="id" class="form-control mb-0" name="username" placeholder="ユーザーID">
 						</div>
 						<div class="offset-md-2 col-md-8 text-center">
-									<input type="password" class="form-control" name="password" placeholder="Password">
+									<input type="password" class="form-control mt-0" name="password" placeholder="Password">
 						</div>
 						<div class="offset-md-2 col-md-8 text-center">
 							<button class="btn btn-primary btn-sm mt-2 mb-3" type="submit">ログイン</button>
