@@ -64,40 +64,45 @@
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8">
+		<!-- Required meta tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<title>ログイン</title>
 	</head>
 	<body>
 		<div>
-			<form method="post">
-				<center>
-					<h1>ログイン</h1>
-				</center>
+			<form class="border offset-4 col-4 rounded bg-light mt-5" method="post">
+				<img class="offset-md-4 col-md-4 text-center mt-5" src="../image/KnownAnimalLogo.png">
 				<?php
 					if ($msg != ""){
 						echo "<center><div>".$msg."</div></center>";
 					}
 				?>
-				<div>
-					<center>
-						<div>
-							<input type="id" name="username" placeholder="ユーザーID">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="offset-md-2 col-md-8 text-center mt-4">
+									<input type="id" class="form-control" name="username" placeholder="ユーザーID">
 						</div>
-						<br>
-						<div>
-							<input type="password" name="password" placeholder="Password">
+						<div class="offset-md-2 col-md-8 text-center">
+									<input type="password" class="form-control" name="password" placeholder="Password">
 						</div>
-					</center>
+						<div class="offset-md-2 col-md-8 text-center">
+							<button class="btn btn-primary btn-sm mt-2 mb-3" type="submit">ログイン</button>
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mb-3">
+							<a href='<?php echo Constants::PASS_FORGET_URL?>' >パスワードを忘れた方はこちら</a>
+						</div>
+						<div class="offset-md-2 col-md-8 text-center">
+							<div>初めてご利用の方はこちら</div>
+						</div>
+						<div class="offset-md-2 col-md-8 text-center mb-5">
+							<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?php echo Constants::NEW_ACCOUNT_URL?>'">新規アカウントを作成</button>
+						</div>
 				</div>
-				<center>
-					<button type="submit">ログイン</button>
-					<br>
-					<a href='<?php echo Constants::PASS_FORGET_URL?>' >パスワードを忘れた方はこちら</a>
-					<br>
-					<br>
-					<br>
-					<div>初めてご利用の方はこちら</div>
-					<button type="button" onclick="location.href='<?php echo Constants::NEW_ACCOUNT_URL?>'">新規アカウントを作成</button>
-				</center>
+				</div>
 			</form>
 		</div>
 	</body>
