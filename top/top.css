@@ -26,7 +26,7 @@ br {
 .titlebar{
 		width: 100%;
   	  	display: table;
-  	  	background-color: #ffe4e1; 
+  	  	background-color: #ffe4e1;
  		color:#696969;
 		}
 
@@ -37,15 +37,7 @@ br {
 		float: right;
 
 }
-.btn_logout{
-	margin-top: 0px;
-	width: 10%;
-	margin-right: 10px;
-    float: right;
-}
-.btn_logout + * {
-    clear: both;;
-}
+/*
 * {
 	margin-left: 0px;
 	margin-right: 0px;
@@ -53,25 +45,4 @@ br {
 	padding: 0px;
 	font-family: Comic Sans MS;
 }
-.fuwafuwa {
-  animation: fuwafuwa 3s infinite ease-in-out .8s alternate;
-  
-  display: inline-block;
-  transition: 1.5s ease-in-out;
-  width: 50px;
-  height: 60px;
-  margin-top: 0px;
-}
- 
-@keyframes fuwafuwa {
-  0% {
-    transform:translate(0, 0) rotate(-7deg);
-  }
-  50% {
-    transform:translate(0, -7px) rotate(0deg);
-  }
-  100% {
-    transform:translate(0, 0) rotate(7deg);
-  }
-}
-
+*/

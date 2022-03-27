@@ -29,18 +29,52 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
+		<!-- Required meta tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" href="./top.css">
-		<title>ログイン</title>
+		<title>TOP</title>
 	</head>
 	<body>
-		<div class = "titlebar">
-			<p class="top">トップページ</p>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">
+					<img src="../image/KnownAnimalLogo.png" width="180" height="auto" class="d-inline-block align-top" alt="">
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavLightDropdown" aria-controls="navbarNavLightDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarNavLightDropdown">
+					<ul class="navbar-nav mr-auto">
+				  	<li class="nav-item dropdown">
+				    	<a class="nav-link dropdown-toggle" href="#" id="navbarNavLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">MENU</a>
+							<ul class="list-right dropdown-menu dropdown-menu-right" aria-labelledby="navbarLightDropdownMenuLink">
+								<li>
+				    			<a class="dropdown-item" href="<?php echo Constants::ENTRY_URL?>">新規登録</a>
+				  			</li>
+				  			<li>
+				    			<a class="dropdown-item" href='<?php echo Constants::USER_EDIT_URL?>'>ユーザー情報の編集</a>
+				  			</li>
+				  			<li>
+									<form method="get" action="">
+				    				<input type="submit" class="dropdown-item" name="btn_logout" value="ログアウト">
+									</form>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
 			<p class="account">ようこそ！ <?php echo $users['data']['first_name']?>さん</p>
-			<form method="get" action="">
-    			<input type="submit" class="btn_logout" name="btn_logout" value="ログアウト">
-			</form>
 			<br>
-			<a href='<?php echo Constants::USER_EDIT_URL?>' class="user">ユーザー情報の編集</a>
 		</div>
 		<div>
 			<?php echo $_REQUEST["update_message"] ?>
@@ -88,7 +122,6 @@
 					<?php endfor; ?>
 				</table>
 				<br>
-				<button type=“button” onclick="location.href='<?php echo Constants::ENTRY_URL?>'">新規登録</button>
 		</center>
 	</body>
 </html>
