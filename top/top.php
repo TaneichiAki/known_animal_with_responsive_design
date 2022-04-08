@@ -39,39 +39,29 @@
 		<title>TOP</title>
 	</head>
 	<body>
-		<header>
-
-
-
-					<div class="row bg-light">
-						<div class="col-4">
-							<a class="navbar-brand" href="#">
-								<img src="../image/KnownAnimalLogo.png" width="180" height="auto" class="d-inline-block align-top" alt="">
-							</a>
-						</div>
-
-						<div class="offset-7 col-1">
-							<ul class="navbar-nav">
-				        <li class="nav-item dropdown">
-				         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				           MENU
-				         </a>
-				         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-									 <a class="dropdown-item" href="<?php echo Constants::ENTRY_URL?>">新規登録</a>
-									 <a class="dropdown-item" href='<?php echo Constants::USER_EDIT_URL?>'>ユーザー情報の編集</a>
-									 <form method="get" action="">
- 				    				<input type="submit" class="dropdown-item" name="btn_logout" value="ログアウト">
- 									</form>
-				         </div>
-				        </li>
-				      </ul>
-						</div>
-
-					</div>
-
-
-
-		</header>
+		<div class="row bg-light">
+			<div class="col-4">
+				<a class="navbar-brand" href="#">
+					<img src="../image/KnownAnimalLogo.png" width="180" height="auto" class="d-inline-block align-top" alt="">
+				</a>
+			</div>
+			<div class="offset-7 col-1">
+				<ul class="navbar-nav">
+	        <li class="nav-item dropdown">
+	         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	           MENU
+	         </a>
+	         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						 <a class="dropdown-item" href="<?php echo Constants::ENTRY_URL?>">新規登録</a>
+						 <a class="dropdown-item" href='<?php echo Constants::USER_EDIT_URL?>'>ユーザー情報の編集</a>
+						 <form method="get" action="">
+		    				<input type="submit" class="dropdown-item" name="btn_logout" value="ログアウト">
+							</form>
+	         </div>
+	        </li>
+	      </ul>
+			</div>
+		</div>
 		<main>
 			<div class="container">
 			</div>
@@ -108,59 +98,56 @@
 			</div>
 		</nav>
 	-->
-			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+ 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-			<p class="account">ようこそ！ <?php echo $users['data']['first_name']?>さん</p>
-			<br>
-		</div>
+		<p class="account">ようこそ！ <?php echo $users['data']['first_name']?>さん</p>
+		<br>
 		<div>
 			<?php echo $_REQUEST["update_message"] ?>
 		</div>
-		<center>
-			<h2>
-				<img src= "../image/inu.png"  class=""animal" alt = "犬" title = "犬" width = 60 height = 60 >知ってる動物一覧
-				<img src= "../image/neko.png"  class="animal" alt = "猫" title = "猫" width = 60 height = 60 >
-			</h2>
-				<table border = "1" style = "border-collapse: collapse">
-					<tr bgcolor="#dcdcdc"><th>No</th><th>イメージ</th><th>名称</th><th>科</th><th>特徴</th><th>知った日</th><th>編集</th></tr>
+		<div class="container">
+			<div class="card-group mb-3">
+				<div class="row">
 					<?php for($i = 0;$i < $count; $i++): ?>
-					<tr height=80px><td>
-					<?=$i+1 ;?>
-					</td><td>
-					<div style="text-align:center;">
-					<?php
-					$filename = Constants::ANIMAL_PHOTO_SERVER.$animals['data'][$i]['no'].'_animal.jpg';
-					?>
-					<?php if(file_exists($filename)): ?>
-					<img src='/~testaki/animal_photo/<?php echo $animals['data'][$i]['no'] ?>_animal.jpg?<?php echo date("YmdHis");?>' width=auto height=80px />
-					<?php else: ?>
-						<img src='/~testaki/animal_photo/no_image.jpeg?<?php echo date("YmdHis");?>' width=auto height=80px>
-					<?php endif; ?>
+  				<div class="col-sm-3">
+						<div class="card">
+							<?php
+							$filename = Constants::ANIMAL_PHOTO_SERVER.$animals['data'][$i]['no'].'_animal.jpg';
+							?>
+							<?php if(file_exists($filename)): ?>
+							<img src='/~testaki/animal_photo/<?php echo $animals['data'][$i]['no'] ?>_animal.jpg?<?php echo date("YmdHis");?>' class="card-img-top" height=220 width=auto>
+							<?php else: ?>
+							<img src='/~testaki/animal_photo/no_image.jpeg?<?php echo date("YmdHis");?>' class="card-img-top" height=220 width=auto>
+							<?php endif; ?>
+							<div class="card-body">
+								<h5 class="card-title">
+									<?= $animals['data'][$i]['name']; ?>
+								</h5>
+								<p>科：
+									<?php
+										echo $animals['data'][$i]['family'];
+									?>
+								</p>
+								<p>特徴：
+									<?php
+										echo $animals['data'][$i]['features'];
+									?>
+								</p>
+								<p>知った日：
+									<?php
+										echo $animals['data'][$i]['date'];
+									?>
+								</p>
+								<button class="btn btn-primary" type="submit" onclick="location.href='<?php echo Constants::EDIT_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>'">更新</button>
+								<button class="btn btn-primary" type="submit" onclick="window.open('<?php echo Constants::DELETE_URL?>?delete_animal=<?php echo $animals['data'][$i]['no'] ?>','Delete','width=800,height=600')">削除</button>
+							</div>
+						</div>
 					</div>
-					</td><td>
-					<?= $animals['data'][$i]['name']; ?>
-					</td><td>
-					<?php
-					echo $animals['data'][$i]['family'];
-					?>
-					</td><td>
-					<?php
-					echo $animals['data'][$i]['features'];
-					?>
-					</td><td>
-					<?php
-					echo $animals['data'][$i]['date'];
-					?>
-					</td><td>
-					<button type="submit" onclick="location.href='<?php echo Constants::EDIT_URL?>?update_animal=<?php echo $animals['data'][$i]['no'] ?>'">更新</button>
-
-					<button type="submit" onclick="window.open('<?php echo Constants::DELETE_URL?>?delete_animal=<?php echo $animals['data'][$i]['no'] ?>','Delete','width=800,height=600')">削除</button>
-					</td></tr>
 					<?php endfor; ?>
-				</table>
-				<br>
-		</center>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
