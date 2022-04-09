@@ -36,7 +36,7 @@ abstract class KnownAnimalBase
 		try{
       $this->prologue();
 			if($_SERVER["REQUEST_METHOD"] == "POST"){
-				$GLOVALS['msg'] = $this->post();
+				$this->msg = $this->post();
 			}else{
 				$this->get();
 			}
@@ -45,6 +45,16 @@ abstract class KnownAnimalBase
 			print('Error:'.$e->getMessage());
 			die();
 		}
+	}
+
+	public function existMsg():string
+	{
+		return $this->msg === "" ? false : true;
+	}
+
+	public function getMsg():string
+	{
+		return $this->msg;
 	}
 }
 ?>

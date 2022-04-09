@@ -79,8 +79,8 @@
 					<div class="offset-md-3 col-md-6 text-center mt-3">
 					<h2>動物データの更新</h2>
 					<h3><?php
-					if ($obj->msg != ""){
-						echo "<center><div>".$obj->msg."</div></center>";
+					if ($obj->existMsg()){
+						echo "<center><div>".$obj->getMsg()."</div></center>";
 					}
 					?></h3>
 				</div>
