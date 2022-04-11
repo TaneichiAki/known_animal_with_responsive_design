@@ -76,18 +76,18 @@
 	<body>
 		<div>
 			<form class="border offset-3 col-6 rounded bg-light mt-5" method="post" enctype="multipart/form-data">
-					<div class="offset-md-3 col-md-6 text-center mt-3">
-					<h2>動物データの更新</h2>
-					<h3><?php
+					<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
+					<h4>動物データの更新</h4>
+					<h6><?php
 					if ($obj->existMsg()){
 						echo "<center><div>".$obj->getMsg()."</div></center>";
 					}
-					?></h3>
+					?></h6>
 				</div>
 					<div class="container-fluid">
 
-						<div class="offset-md-3 col-md-6 text-center mt-5">
-							<h4><?php echo "対象の動物：".$select_animal ?></h4>
+						<div class="offset-md-3 col-md-6 text-center mt-3">
+							<h5><?php echo "対象の動物：".$select_animal ?></h5>
 						</div>
 						<div class="offset-md-3 col-md-6 form-inline">
 							<label for="family" class="control-label">何科</label>
