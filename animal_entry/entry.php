@@ -72,41 +72,53 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="./entry.css">
+		<!-- Required meta tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 		<title>新規登録</title>
 	</head>
 	<body>
 		<div>
-			<form method="post" enctype="multipart/form-data">
-				<center>
-					<h1>新規登録</h1>
+			<form class="border offset-3 col-6 rounded bg-light mt-5" method="post" enctype="multipart/form-data">
+					<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
+					<h4>新規登録</h4>
 					<?php
 						if($msg != ""){
 							echo "<center><div>".$msg."</div></center>";
 						}
 					?>
-					<div>
-						<div>
-							<input type="name" name="animalname" placeholder="動物の名称">
-						</div>
-						<div>
-							<input type="family" name="family" placeholder="何科">
-						</div>
-						<div>
-							<input type="features" name="features" placeholder="特徴">
-						</div>
-						<div>
-							<input type="date" name="date" placeholder="知った日">
-						</div>
-						<div>
-							<input type="file" name="image">
-							<br>
-							<br>
-							<input type="submit" value="登録">
-						</div>
 					</div>
-					<button type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
-				</center>
+					<div class="container-fluid">
+						<div class="offset-md-3 col-md-6">
+							<label for="name" class="control-label">動物の名称</label>
+							<input type="name" class="form-control col-md-2" name="animalname" placeholder="動物の名称">
+						</div>
+						<div class="offset-md-3 col-md-6">
+							<label for="family" class="control-label">何科</label>
+							<input type="family" class="form-control col-md-2" name="family" placeholder="何科">
+						</div>
+						<div class="offset-md-3 col-md-6">
+							<label for="features" class="control-label">特徴</label>
+							<input type="features" class="form-control col-md-2" name="features" placeholder="特徴">
+						</div>
+						<div class="offset-md-3 col-md-6">
+							<label for="date" class="control-label">知った日</label>
+							<input type="date" class="form-control col-md-2" name="date" placeholder="知った日">
+						</div>
+						<div class="offset-md-3 col-md-6">
+							<label for="file" class="control-label">イメージ画像</label>
+							<input type="file" class="form-control" name="image">
+							<br>
+						</div>
+							<br>
+							<button class="offset-md-5 col-md-2 btn btn-primary btn-sm mt-2 mb-3" type="submit">登録</button>
+					</div>
+					<button class="offset-md-5 col-md-2 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+				</div>
 			</form>
 		</div>
 	</body>

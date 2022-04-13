@@ -39,7 +39,7 @@
 			if($_REQUEST['features'] == ""){
 				return “特徴を入力してください。”;
 			}
-			if($_REQUEST['date('] == ""){
+			if($_REQUEST['date'] == ""){
 				return “知った日を入力してください。”;
 			}
 			$this->update();
