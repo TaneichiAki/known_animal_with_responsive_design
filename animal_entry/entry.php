@@ -4,7 +4,16 @@
 	require_once(__DIR__."/../classes/knownAnimalBase.php");
 
 	class Entry extends KnownAnimalBase{
-		
+		//初回処理
+		protected function prologue(){};
+		//POST時処理
+		protected function post(){};
+		//GET時処理
+		protected function get(){};
+		//更新処理
+		protected function update(){};
+		//終了前処理
+		protected function epilogue(){};
 	}
 
 	/**
