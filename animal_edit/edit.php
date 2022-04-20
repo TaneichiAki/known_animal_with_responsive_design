@@ -24,7 +24,7 @@
 		/**
 		*animalデータ更新処理
 		*/
-		protected function update(){
+		protected function entry(){
 			$update_sql = 'update animal set family = ?,features = ?,date = ? where no = ?';
 			$users = Dao::db()->mod_exec($update_sql,array($_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$_REQUEST['update_animal']));
 			move_uploaded_file($_FILES['image']['tmp_name'] ,Constants::ANIMAL_PHOTO_SERVER.$_REQUEST['update_animal'].'_animal.jpg' );
@@ -42,7 +42,7 @@
 			if($_REQUEST['date'] == ""){
 				return “知った日を入力してください。”;
 			}
-			$this->update();
+			$this->entry();
 
 			//下記TOPページに遷移する。
 			header ('Location:'.Constants::TOP_URL);

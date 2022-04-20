@@ -5,82 +5,52 @@
 
 	class Entry extends KnownAnimalBase{
 		//初回処理
-		protected function prologue(){};
+		protected function prologue(){}
+		//登録処理
+		protected function entry(){
+			//ログインしているユーザーのユーザー情報を取得
+			$user_sql = 'select * from users  where user_id = ?';
+			$user = Dao::db()->show_one_row($user_sql,array($_SESSION['login']));
+			//ユーザーID
+			$memberid = $user['data']['id'];
+			//テキストボックスで入力した新規動物情報をデータベースに登録
+			$insert_sql = 'insert into animal(name,family,features,date,memberid) values(?,?,?,?,?)';
+			$insert_id = Dao::db()->add_one_row($insert_sql,array($_REQUEST['animalname'],$_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$memberid));
+			//アップロードされたファイルを一時フォルダから指定のフォルダへファイル名「（insert_id）_animal.jpg」にして移動
+			move_uploaded_file($_FILES['image']['tmp_name'] , Constants::ANIMAL_PHOTO_SERVER.$insert_id['id'].'_animal.jpg' );
+		}
 		//POST時処理
-		protected function post(){};
+		protected function post(){
+			if($_REQUEST['animalname'] ==  ""){
+				return "動物の名称を入力してください。";
+			}
+			if($_REQUEST['family'] == ""){
+				return "何科か入力してください。";
+			}
+			if($_REQUEST['features'] == ""){
+				return "特徴を入力してください。";
+			}
+			if($_REQUEST['date'] == ""){
+				return "知った日を入力してください。";
+			}
+			//ENTRY処理実行
+			$this->entry();
+			//下記ページに遷移する。
+			header ('Location:'.Constants::TOP_URL);
+			exit;
+		}
 		//GET時処理
-		protected function get(){};
-		//更新処理
-		protected function update(){};
+		protected function get(){}
 		//終了前処理
-		protected function epilogue(){};
+		protected function epilogue(){}
 	}
 
-	/**
-	*グローバル変数定義
-	*/
-	$msg = "";
-	/**
-	*ENTRY処理
-	*/
-	function entry(){
-		//ログインしているユーザーのユーザー情報を取得
-		$user_sql = 'select * from users  where user_id = ?';
-		$user = Dao::db()->show_one_row($user_sql,array($_SESSION['login']));
-		//ユーザーID
-		$memberid = $user['data']['id'];
-		//テキストボックスで入力した新規動物情報をデータベースに登録
-		$insert_sql = 'insert into animal(name,family,features,date,memberid) values(?,?,?,?,?)';
-		$insert_id = Dao::db()->add_one_row($insert_sql,array($_REQUEST['animalname'],$_REQUEST['family'],$_REQUEST['features'],$_REQUEST['date'],$memberid));
-		//アップロードされたファイルを一時フォルダから指定のフォルダへファイル名「（insert_id）_animal.jpg」にして移動
-		move_uploaded_file($_FILES['image']['tmp_name'] , Constants::ANIMAL_PHOTO_SERVER.$insert_id['id'].'_animal.jpg' );
-	}
-	/**
-	*POST時処理
-	*/
-	function post(){
-		if($_REQUEST['animalname'] ==  ""){
-			return "動物の名称を入力してください。";
-		}
-		if($_REQUEST['family'] == ""){
-			return "何科か入力してください。";
-		}
-		if($_REQUEST['features'] == ""){
-			return "特徴を入力してください。";
-		}
-		if($_REQUEST['date'] == ""){
-			return "知った日を入力してください。";
-		}
-		//ENTRY処理実行
-		entry();
-		//下記ページに遷移する。
-		header ('Location:'.Constants::TOP_URL);
-		exit;
-	}
-	/*
-	*メイン処理
-	*/
-	function main(){
-		session_start();
-		//セッションIDがセットされていなかったらログインページに戻る
-		if(! isset($_SESSION['login'])){
-			header("Location:".Constants::LOGIN_URL);
-			exit();
-		}
-		try{
-			if($_SERVER["REQUEST_METHOD"] == "POST"){
-				$GLOBALS['msg'] = post();
-			}
-		}catch (PDOException $e){
-			//phpではない外部のアプリと連携するときはtry catchでエラーが起きた時の動きを定義した方が良い
-			print('Error:'.$e->getMessage());
-			die();
-		}
-	}
-	/**
-	*メイン処理実行
-	*/
-	main();
+		$obj = new Entry();
+		/**
+		*メイン処理実行
+		*/
+		$obj->main();
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">

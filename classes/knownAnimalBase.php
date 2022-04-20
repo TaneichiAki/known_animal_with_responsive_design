@@ -19,8 +19,8 @@ abstract class KnownAnimalBase
 	abstract protected function post();
   //GET時処理
   abstract protected function get();
-  //更新処理
-  abstract protected function update();
+  //登録処理
+  abstract protected function entry();
   //終了前処理
   abstract protected function epilogue();
 	/**
