@@ -3,7 +3,7 @@
 	require_once(__DIR__."/../classes/constants.php");
 	require_once(__DIR__."/../classes/knownAnimalBase.php");
 
-	class Entry extends KnownAnimalBase{
+	class NewEntry extends KnownAnimalBase{
 		//初回処理
 		protected function prologue(){}
 		//登録処理
@@ -45,7 +45,7 @@
 		protected function epilogue(){}
 	}
 
-		$obj = new Entry();
+		$obj = new NewEntry();
 		/**
 		*メイン処理実行
 		*/
@@ -71,8 +71,8 @@
 					<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
 					<h4>新規登録</h4>
 					<?php
-						if($msg != ""){
-							echo "<center><div>".$msg."</div></center>";
+						if($obj->existMsg()){
+							echo "<center><div>".$obj->getMsg()."</div></center>";
 						}
 					?>
 					</div>
