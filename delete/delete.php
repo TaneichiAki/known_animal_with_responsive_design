@@ -58,25 +58,30 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
+		<!-- Required meta tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 		<title>削除</title>
 	</head>
 	<body>
-		<div>
-			<center>
-				<h1>このデータを削除しますか？</h1>
+			<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
+				<h6>このデータを削除しますか？</h6>
 				<br>
-				<table border = "1" style = "border-collapse: collapse">
-					<tr><th>名称</th><td><?php echo $select_animal ?></td></tr>
-					<tr><th>科</th><td><?php echo $select_family ?></td></tr>
-					<tr><th>特徴</th><td><?php echo $select_features ?></td></tr>
-					<tr><th>知った日</th><td><?php echo $select_date ?></td></tr>
+				<table class="table table-bordered border-secondary">
+					<tr><th class="table-primary border-secondary">名称</th><td><?php echo $select_animal ?></td></tr>
+					<tr><th class="table-primary border-secondary">科</th><td><?php echo $select_family ?></td></tr>
+					<tr><th class="table-primary border-secondary">特徴</th><td><?php echo $select_features ?></td></tr>
+					<tr><th class="table-primary border-secondary">知った日</th><td><?php echo $select_date ?></td></tr>
 				</table>
 				<br>
 				<form method="post">
-					<button type="submit">削除</button>
+					<button class="col-md-2 btn btn-primary btn-sm mt-2 mb-3" type="submit">削除</button>
 					<input type = "hidden" name = "delete_exec_animal"  value = "<?= $select_no ?>">
 				</form>
-			</center>
-		</div>
+			</div>
 	</body>
 </html>
