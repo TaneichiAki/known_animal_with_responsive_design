@@ -83,7 +83,7 @@
 			<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">更新</button>
 			<br>
 			<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
-		</div>
+			</div>
 		</form>
 	</div>
 	</body>
