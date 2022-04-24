@@ -37,11 +37,16 @@
 		<title>ユーザー情報編集</title>
 	</head>
 	<body>
-		<center>
-			<h1>ユーザー情報</h1>
-				<table border = "1" style = "border-collapse: collapse">
+		<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
+			<h4>ユーザー情報</h4>
+				<table class="table table-striped table-bordered">
+					<tr class="bg-secondary text-white">
+						<th scope="col">項目</th>
+						<th scope="col">登録データ</th>
+						<th scope="col"></th>
+					</tr>
 					<tr>
-						<td bgcolor= '#dcdcdc'>会員番号</td>
+						<th>会員番号</th>
 						<td>
 							<?php
 					 		echo $user['data']['id'];
@@ -51,7 +56,7 @@
 					 	</td>
 					</tr>
 					<tr>
-						<td bgcolor= '#dcdcdc'>ユーザーID</td>
+						<th>ユーザーID</th>
 					 	<td>
 					 		<?php
 					 			echo $user['data']['user_id'];
@@ -61,85 +66,85 @@
 					 	</td>
 					 </tr>
 					 <tr>
-					 	<td bgcolor= '#dcdcdc'>姓</td>
+					 	<th>姓</th>
 					  <td>
 					 		<?php
 					 			echo $user['data']['last_name'];
 					 		?>
 					 	</td>
 						<td>
-					  	<button type="submit" onclick="location.href='<?php echo Constants::LAST_NAME_EDIT_URL?>'">変更</button>
+					  	<button class="btn btn-primary btn-sm"　type="submit" onclick="location.href='<?php echo Constants::LAST_NAME_EDIT_URL?>'">変更</button>
 					 	</td>
 					  </tr>
 						<tr>
-					  	<td bgcolor= '#dcdcdc'>名</td>
+					  	<th>名</th>
 					  	<td>
 					 			<?php
 					 				echo $user['data']['first_name'];
 					 			?>
 					 		</td>
 							<td>
-					  		<button type="submit" onclick="location.href='<?php echo Constants::FIRST_NAME_EDIT_URL?>'">変更</button>
+					  		<button class="btn btn-primary btn-sm"　type="submit" onclick="location.href='<?php echo Constants::FIRST_NAME_EDIT_URL?>'">変更</button>
 					 		</td>
 					 	</tr>
 						<tr>
-					  	<td bgcolor= '#dcdcdc'>部署</td>
+					  	<th>部署</th>
 					  	<td>
 					 			<?php
 					 				echo $user['data']['department'];
 					 			?>
 					 		</td>
 							<td>
-					  		<button type="submit" onclick="location.href='<?php echo Constants::DEPARTMENT_EDIT_URL?>'">変更</button>
+					  		<button class="btn btn-primary btn-sm"　type="submit" onclick="location.href='<?php echo Constants::DEPARTMENT_EDIT_URL?>'">変更</button>
 					 		</td>
 					 	</tr>
 						<tr>
-					 		<td bgcolor= '#dcdcdc'>役職</td>
+					 		<th>役職</th>
 					  	<td>
 					 			<?php
 					 				echo $user['data']['post'];
 					 			?>
 					 		</td>
 							<td>
-					 			<button type="submit" onclick="location.href='<?php echo Constants::POST_EDIT_URL?>'">変更</button>
+					 			<button class="btn btn-primary btn-sm"　type="submit" onclick="location.href='<?php echo Constants::POST_EDIT_URL?>'">変更</button>
 					 		</td>
 					 	</tr>
 						<tr>
-					 		<td bgcolor= '#dcdcdc'>生年月日</td>
+					 		<th>生年月日</th>
 					  	<td>
 					 			<?php
 					 				echo $user['data']['birth'];
 					 			?>
 					 		</td>
 							<td>
-					  		<button type="submit" onclick="location.href='<?php echo Constants::BIRTH_EDIT_URL?>'">変更</button>
+					  		<button class="btn btn-primary btn-sm"　type="submit" onclick="location.href='<?php echo Constants::BIRTH_EDIT_URL?>'">変更</button>
 					 		</td>
 					 	</tr>
 						<tr>
-					 		<td bgcolor= '#dcdcdc'>メールアドレス</td>
+					 		<th>メールアドレス</th>
 					  	<td>
 					 			<?php
 					 				echo $user['data']['mail'];
 					 			?>
 					 		</td>
 							<td>
-					  		<button type="submit" onclick="location.href='<?php echo Constants::MAIL_EDIT_URL?>'">変更</button>
+					  		<button class="btn btn-primary btn-sm"　type="submit" onclick="location.href='<?php echo Constants::MAIL_EDIT_URL?>'">変更</button>
 					 		</td>
 					 	</tr>
 						<tr>
-					 		<td bgcolor= '#dcdcdc'>パスワード</td>
+					 		<th>パスワード</th>
 					  	<td>
 					 			<?php
 					 				echo '********';
 					 			?>
 					 		</td>
 							<td>
-					  		<button type="submit" onclick="location.href='<?php echo Constants::PASS_CHANGE_URL?>'">変更</button>
+					  		<button  class="btn btn-primary btn-sm"　type="submit" onclick="location.href='<?php echo Constants::PASS_CHANGE_URL?>'">変更</button>
 					 		</td>
 					 	</tr>
 				</table>
 				<br>
-			<button type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
-		</center>
+			<button  class="col-md-2 btn btn-primary btn-sm mt-2 mb-3"　type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+		</div>
 	</body>
 </html>
