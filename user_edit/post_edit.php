@@ -56,27 +56,35 @@
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
+		<!-- Required meta tags -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 	</head>
 	<body>
-	<div>
+	<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
 		<form method="post" enctype="multipart/form-data">
-		<center>
-			<h1>ユーザー情報の編集</h1>
+			<h4>ユーザー情報の編集</h4>
 			<?php
 				if ($msg != ""){
 					echo "<center><div>".$msg."</div></center>";
 				}
 			?>
 			<br>
+			<div class="container-fluid">
 			<div>新しい役職名</div>
-			<div>
-			<input type="text" name="post" value="<?php echo $user['data']['post']?>">
+			<div class="offset-md-4 col-md-4">
+			<input type="text" class="form-control" name="post" value="<?php echo $user['data']['post']?>">
 			</div>
 			<br>
-			<input type="submit" value="更新">
+			<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">更新</button>
 			<br>
-			<button type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
-		</center>
+			<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
+			</div>
 		</form>
+	</div>
 	</body>
 </html>
