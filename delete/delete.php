@@ -1,58 +1,45 @@
 <?php
 	require_once(__DIR__."/../classes/Dao.php");
 	require_once(__DIR__."/../classes/constants.php");
-	/**
-	*グローバル変数定義
-	*/
-	$select_animal = "";
-	$select_family = "";
-	$select_features = "";
-	$select_date = "";
-	$select_no = "";
-	/*
-	*削除処理
-	*/
-	function delete(){
-		//対象の動物情報をデータベースから削除
-		$delete_sql = 'delete from animal where no = ?';
-		$delete_animal = Dao::db()->mod_exec($delete_sql,array($_REQUEST['delete_exec_animal']));
-		//下記ページに遷移する
-		header ('Location:'.Constants:: DELETE_DONE_URL);
-		exit;
-	}
-	/*
-	*メイン処理
-	*/
-	function main(){
-		session_start();
-		//セッションIDがセットされていなかったらログインページに戻る
-		if(! isset($_SESSION['login'])){
-			header("Location: login.php");
-			exit();
-		}
-		try{
+	require_once(__DIR__."/../classes/knownAnimalBase.php");
+
+	class Delete extends KnownAnimalBase{
+		//初回処理
+	  protected function prologue(){
 			//TOPページから受け取ったNoを使って削除対象の動物を抽出
 			$select_sql = 'select * from animal inner join users on users.id = animal.memberid where no = ?';
 			$animal = Dao::db()->show_one_row($select_sql,array($_REQUEST['delete_animal']));
-
+			//ここはGLOBALSを使ったこの定義で良いのか？
 			$GLOBALS['select_animal']=$animal['data']['name'];
 			$GLOBALS['select_family']=$animal['data']['family'];
 			$GLOBALS['select_features']=$animal['data']['features'];
 			$GLOBALS['select_date']=$animal['data']['date'];
 			$GLOBALS['select_no']=$animal['data']['no'];
-			if($_SERVER["REQUEST_METHOD"] == "POST"){
-				delete();
-			}
-		}catch (PDOException $e){
-		//phpではない外部のアプリと連携するときはtry catchでエラーが起きた時の動きを定義した方が良い
-			print('Error:'.$e->getMessage());
-			die();
 		}
+		//POST時処理
+		protected function post(){
+			//対象の動物情報をデータベースから削除
+			$delete_sql = 'delete from animal where no = ?';
+			$delete_animal = Dao::db()->mod_exec($delete_sql,array($_REQUEST['delete_exec_animal']));
+			//下記ページに遷移する
+			header ('Location:'.Constants:: DELETE_DONE_URL);
+			exit;
+		}
+	  //GET時処理
+	  protected function get(){}
+	  //登録処理
+	  protected function entry(){}
+	  //終了前処理
+	  protected function epilogue(){}
+
 	}
+
+	$obj = new Delete();
 	/**
 	*メイン処理実行
 	*/
-	main();
+	$obj->main();
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
