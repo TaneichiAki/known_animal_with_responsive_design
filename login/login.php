@@ -2,6 +2,7 @@
 	require_once(__DIR__."/../classes/Logger.php");
 	require_once(__DIR__."/../classes/Dao.php");
 	require_once(__DIR__."/../classes/constants.php");
+	require_once(__DIR__."/../classes/knownAnimalBase.php");
 
 	$logger = new Logger(Constants::LOGPATH);
 
