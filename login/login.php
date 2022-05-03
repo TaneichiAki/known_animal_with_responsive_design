@@ -74,16 +74,15 @@
 		<title>ログイン</title>
 	</head>
 	<body>
-		<div>
-			<form class="border offset-4 col-4 rounded bg-light mt-5" method="post">
-				<img class="offset-md-4 col-md-4 text-center mt-5" src="../image/KnownAnimalLogo.png">
+		<div class="container-fluid">
+			<div class="row">
+				<form class="border offset-1 col-10 offset-md-4 col-md-4 rounded bg-light mt-5" method="post">
+				<img class="offset-md-4 col-md-4 text-center mt-5 img-fluid" src="../image/KnownAnimalLogo.png">
 				<?php
 					if ($msg != ""){
 						echo "<center><div>".$msg."</div></center>";
 					}
 				?>
-				<div class="container-fluid">
-					<div class="row">
 						<div class="offset-md-2 col-md-8 text-center mt-4">
 									<input type="id" class="form-control mb-0" name="username" placeholder="ユーザーID">
 						</div>
@@ -102,9 +101,8 @@
 						<div class="offset-md-2 col-md-8 text-center mb-5">
 							<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?php echo Constants::NEW_ACCOUNT_URL?>'">新規アカウントを作成</button>
 						</div>
-				</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</body>
 </html>

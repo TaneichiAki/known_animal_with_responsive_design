@@ -2,6 +2,7 @@
 	require_once(__DIR__."/../classes/Dao.php");
 	require_once(__DIR__."/../classes/constants.php");
 	require_once(__DIR__."/../classes/knownAnimalBase.php");
+	
 
 	class Delete extends KnownAnimalBase{
 		//初回処理

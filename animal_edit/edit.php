@@ -21,6 +21,7 @@
 			//知った日
 			$GLOBALS['select_date']=$info['data']['date'];
 		}
+		
 		/**
 		*animalデータ更新処理
 		*/
