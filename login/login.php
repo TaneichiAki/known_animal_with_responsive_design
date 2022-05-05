@@ -83,24 +83,25 @@
 						echo "<center><div>".$msg."</div></center>";
 					}
 				?>
-						<div class="offset-md-2 col-md-8 text-center mt-4">
-									<input type="id" class="form-control mb-0" name="username" placeholder="ユーザーID">
-						</div>
-						<div class="offset-md-2 col-md-8 text-center">
-									<input type="password" class="form-control mt-0" name="password" placeholder="Password">
-						</div>
-						<div class="offset-md-2 col-md-8 text-center">
-							<button class="btn btn-primary btn-sm mt-2 mb-3" type="submit">ログイン</button>
-						</div>
-						<div class="offset-md-2 col-md-8 text-center mb-3">
-							<a href='<?php echo Constants::PASS_FORGET_URL?>' >パスワードを忘れた方はこちら</a>
-						</div>
-						<div class="offset-md-2 col-md-8 text-center">
-							<div>初めてご利用の方はこちら</div>
-						</div>
-						<div class="offset-md-2 col-md-8 text-center mb-5">
-							<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?php echo Constants::NEW_ACCOUNT_URL?>'">新規アカウントを作成</button>
-						</div>
+				<div class="offset-md-2 col-md-8 text-center mt-4">
+							<input type="id" class="form-control mb-0" name="username" placeholder="ユーザーID">
+				</div>
+				<div class="offset-md-2 col-md-8 text-center">
+							<input type="password" class="form-control mt-0" name="password" placeholder="Password">
+				</div>
+				<div class="offset-md-2 col-md-8 text-center">
+					<button class="btn btn-primary btn-sm mt-2 mb-3" type="submit">ログイン</button>
+				</div>
+				<div class="offset-md-2 col-md-8 text-center mb-3">
+					<a href='<?php echo Constants::PASS_FORGET_URL?>' >パスワードを忘れた方はこちら</a>
+				</div>
+				<div class="offset-md-2 col-md-8 text-center">
+					<div>初めてご利用の方はこちら</div>
+				</div>
+				
+				<div class="offset-md-2 col-md-8 text-center mb-5">
+					<button class="btn btn-primary btn-sm" type="button" onclick="location.href='<?php echo Constants::NEW_ACCOUNT_URL?>'">新規アカウントを作成</button>
+				</div>
 				</form>
 			</div>
 		</div>
