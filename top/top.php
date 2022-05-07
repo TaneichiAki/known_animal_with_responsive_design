@@ -6,6 +6,7 @@
 		if( !empty($_GET['btn_logout']) ) {
 			unset($_SESSION['login']);
 		}
+
 		//セッションIDがセットされていなかったらログインページに戻る
 		if(! isset($_SESSION['login'])){
 			header("Location:".Constants::LOGIN_URL);
@@ -40,67 +41,54 @@
 	</head>
 	<body>
 		<div class="container-fluid">
-<!-- 追加箇所 ＊課題＊ログアウトのみボタン表示になる⇨javascriptで修正？-->
-  <!-- ナビゲーションバー -->
-  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
-    <!-- タイトル -->
-    <a class="navbar-brand" href="#">
-			<img src="../image/KnownAnimalLogo.png" width="180" height="auto" class="d-inline-block align-top" alt="">
-		</a>
-    <!-- ハンバーガーメニュー -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- ナビゲーションメニュー -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="<?php echo Constants::ENTRY_URL?>">新規登録</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href='<?php echo Constants::USER_EDIT_URL?>'>ユーザー情報の編集</a>
-        </li>
-        <li class="nav-item">
-					<form method="get" action="">
-						 <input type="submit" class="nav-link" name="btn_logout" value="ログアウト">
-					 </form>
-        </li>
-      </ul>
-    </div>
-  </nav>
-<!-- 追加箇所終了 -->
+		<div class="row mb-2">
+		<!-- ナビゲーションバー -->
+		<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+		  <!-- タイトル -->
+		  <a class="navbar-brand" href="#">
+				<img src="../image/KnownAnimalLogo.png" width="180" height="auto" class="d-inline-block align-top" alt="">
+			</a>
+		  <!-- ハンバーガーメニュー -->
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <!-- ナビゲーションメニュー -->
+		  <div class="collapse navbar-collapse" id="navbarNav">
+		    <ul class="navbar-nav">
+		      <li class="nav-item active">
+		        <a class="nav-link" href="<?php echo Constants::ENTRY_URL?>">新規登録</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href='<?php echo Constants::USER_EDIT_URL?>'>ユーザー情報の編集</a>
+		      </li>
+		      <li class="nav-item">
+						<form name="logout" method="get" action="">
+							<a class="nav-link" id="logout" href='#'>ログアウト</a>
+							<input type="hidden" id="hidden" name="btn_logout" value="ログアウト">
+						 </form>
+						 <script>
+						  var a_link = document.getElementById("logout");
 
+						  a_link.addEventListener('click', function() {
+						    //submit()でフォームの内容を送信
+						    document.logout.submit();
+						  })
+							console.dir(document.getElementById("hidden"));
+						</script>
 
-		<div class="row bg-light">
-			<div class="col-4">
-				<a class="navbar-brand" href="#">
-					<img src="../image/KnownAnimalLogo.png" width="180" height="auto" class="d-inline-block align-top" alt="">
-				</a>
-			</div>
-			<div class="offset-4 col-4 offset-md-7 col-md-1">
-				<ul class="navbar-nav">
-	        <li class="nav-item dropdown">
-	         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	           MENU
-	         </a>
-	         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						 <a class="dropdown-item" href="<?php echo Constants::ENTRY_URL?>">新規登録</a>
-						 <a class="dropdown-item" href='<?php echo Constants::USER_EDIT_URL?>'>ユーザー情報の編集</a>
-						 <form method="get" action="">
-		    				<input type="submit" class="dropdown-item" name="btn_logout" value="ログアウト">
-							</form>
-	         </div>
-	        </li>
-	      </ul>
-			</div>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
  		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
  		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-		<p class="account">ようこそ！ <?php echo $users['data']['first_name']?>さん</p>
-		<br>
-		<div>
+		<div class="row mt-5 mb-2">
+			<br>
+			<p class="account">ようこそ！ <?php echo $users['data']['first_name']?>さん</p>
+		</div>
+		<div class="row">
 			<?php echo $_REQUEST["update_message"] ?>
 		</div>
 			<div class="card-group">

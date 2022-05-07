@@ -1,17 +1,4 @@
 <meta charset="utf-8">
-
-.cp_bgpattern12 {
-	background-color: transparent;
-	background-image:
-	 radial-gradient(#F48FB1 3px, transparent 3px);
-	background-size: 300px 300px;
-}
-.top{
-	width: 15%;
-  	display: table-cell;
-	font-weight:bold;
-	font-size: 20px;
-	}
 .account{
 	width: 98%;
   	text-align : right;
@@ -23,22 +10,6 @@ br {
 	content: "";
 	margin: 50px 0;
 }
-
-.titlebar{
-		width: 100%;
-  	  	display: table;
-  	  	background-color: #ffe4e1;
- 		color:#696969;
-		}
-
-.user{
-  		width: 10%;
-		font-size: 15px;
-		margin-right: 10px;
-		float: right;
-
-}
-
 
 * {
 	margin-left: 0px;
