@@ -25,6 +25,10 @@
 			<div class="row">
 				<div class="offset-3 col-6 text-center mt-4">
 					<h6>削除しました！</h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="offset-3 col-6 text-center mt-4">
 					<script type="text/javascript">
 						function refresh(){
 							window.opener.location.reload();

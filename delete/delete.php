@@ -58,16 +58,23 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="offset-2 col-8 text-center mt-3 mb-3">
+				<div class="offset-2 col-8 text-center mt-5">
 					<h6>このデータを削除しますか？</h6>
 					<br>
+				</div>
+			</div>
+			<div class="row">
+				<div class="offset-2 col-8 text-center mt-3 mb-3">
 					<table class="table table-bordered border-secondary">
 						<tr><th class="table-primary border-secondary">名称</th><td><?php echo $select_animal ?></td></tr>
 						<tr><th class="table-primary border-secondary">科</th><td><?php echo $select_family ?></td></tr>
 						<tr><th class="table-primary border-secondary">特徴</th><td><?php echo $select_features ?></td></tr>
 						<tr><th class="table-primary border-secondary">知った日</th><td><?php echo $select_date ?></td></tr>
 					</table>
-					<br>
+				</div>
+			</div>
+			<div class="row">
+				<div class="offset-2 col-8 text-center mt-3 mb-3">
 					<form method="post">
 						<button class="col-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">削除</button>
 						<input type = "hidden" name = "delete_exec_animal"  value = "<?= $select_no ?>">
