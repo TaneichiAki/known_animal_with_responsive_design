@@ -112,58 +112,100 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</head>
 	<body>
-			<form class="border offset-4 col-4 rounded bg-light mt-5 mb-5" method="post" enctype="multipart/form-data">
-				<div class="container-fluid">
+		<div class="container-fluid">
+			<div class="row">
+				<form class="border offset-1 col-10 offset-md-3 col-md-6 rounded bg-light mt-4 mb-5" method="post" enctype="multipart/form-data">
 					<div class="row">
-						<h5 class="offset-md-2 col-md-8 text-center mt-4">新規アカウント作成画面</h5>
+						<div class="offset-2 col-8 text-center mt-3">
+							<h5>新規アカウント作成</h5>
+						</div>
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 text-center mt-3">
 						<?php
 							if ($msg != ""){
 								echo "<center><div>".$msg."</div></center>";
 							}
 						?>
-						<div class="offset-md-2 col-md-8 text-center mt-4">
+						</div>
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="last_name" class="control-label">姓</label>
 							<input type="text" class="form-control" name="last_name" placeholder="姓">
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="first_name" class="control-label">名</label>
 							<input type="text" class="form-control" name="first_name" placeholder="名">
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="user_id" class="control-label">ユーザーID</label>
 							<input type="text" class="form-control" name="user_id" placeholder="ユーザーID">
 							<!-条件：他の人が使っているユーザー名でないこと->
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="department" class="control-label">部署名</label>
 							<input type="text" class="form-control" name="department" placeholder="部署名">
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="post" class="control-label">役職名</label>
 							<input type="text" class="form-control" name="post" placeholder="役職名">
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="birth" class="control-label">生年月日</label>
 							<input type="date" class="form-control" name="birth" placeholder="生年月日">
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 text-center mt-3">
 							<input type="radio" name="gender" value="male">男性
 							<input type="radio" name="gender" value="female">女性
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="mail" class="control-label">メールアドレス</label>
 							<input type="email" class="form-control" name="mail" placeholder="メールアドレス">
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="pass" class="control-label">パスワード</label>
 							<input type="password" class="form-control" name="pass" placeholder="パスワード">
 						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<label for="re-pass" class="control-label">パスワード再入力</label>
 							<input type="password" class="form-control" name="re-pass" placeholder="パスワード再入力">
 						</div>
-						<div style="color:#696969">※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</div>
-						<div class="offset-md-2 col-md-8 text-center mt-2">
-						<input type="submit" class="btn btn-primary btn-sm mb-3" value="アカウントを作成する">
-						</div>
-						<div class="offset-md-2 col-md-8 text-center mt-4">
+					</div>
+					<div class="row">
+						<p class="text-secondary mt-3 mb-4">※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</p>
+					</div>
+					<div class="row">
+						<input type="submit" class="offset-2 col-8 offset-md-4 col-md-4 btn btn-primary btn-sm mb-2" value="アカウントを作成する">
+					</div>
+					<div class="row">
+						<div class="text-center mt-4">
 							<p>アカウントをお持ちの方はこちら</p>
-							<button type="button" class="btn btn-primary btn-sm mt-2 mb-3" onclick="location.href='<?php echo Constants::LOGIN_URL?>'"> 今すぐログイン</button>
 						</div>
 					</div>
+					<div class="row">
+						<button type="button" class="offset-2 col-8 offset-md-4 col-md-4 btn btn-primary btn-sm mt-1 mb-3" onclick="location.href='<?php echo Constants::LOGIN_URL?>'"> 今すぐログイン</button>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
+		</div>
 	</body>
 </html>
