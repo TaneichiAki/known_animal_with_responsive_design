@@ -110,7 +110,7 @@
 					<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">更新</button>
 					<input type = "hidden" name = "update_animal"  value = "<?= $select_no ?>">
 					<br>
-					<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+					<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-5" type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
 				</form>
 			</div>
 		</div>
