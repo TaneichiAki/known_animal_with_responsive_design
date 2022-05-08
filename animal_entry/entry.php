@@ -80,38 +80,42 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="offset-3 col-6 mt-3">
+					<div class="offset-2 col-8 mt-3">
 							<label for="name" class="control-label">動物の名称</label>
 							<input type="name" class="form-control" name="animalname" placeholder="動物の名称">
 					</div>
 				</div>
 				<div class="row">
-					<div class="offset-3 col-6 mt-3">
+					<div class="offset-2 col-8 mt-3">
 							<label for="family" class="control-label">何科</label>
 							<input type="family" class="form-control" name="family" placeholder="何科">
 					</div>
 				</div>
 				<div class="row">
-					<div class="offset-3 col-6 mt-3">
+					<div class="offset-2 col-8 mt-3">
 							<label for="features" class="control-label">特徴</label>
 							<input type="features" class="form-control" name="features" placeholder="特徴">
 					</div>
 				</div>
 				<div class="row">
-					<div class="offset-3 col-6 mt-3">
+					<div class="offset-2 col-8 mt-3">
 							<label for="date" class="control-label">知った日</label>
 							<input type="date" class="form-control" name="date" placeholder="知った日">
 					</div>
 				</div>
 				<div class="row">
-					<div class="offset-3 col-6 mt-3">
+					<div class="offset-2 col-8 mt-3">
 							<label for="file" class="control-label">イメージ画像</label>
 							<input type="file" class="form-control" name="image">
 					</div>
 				</div>
 				<br>
-				<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">登録</button>
-				<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-5" type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+				<div class="row">
+					<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">登録</button>
+				</div>
+				<div class="row">
+					<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-5" type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+				</div>
 			</form>
 			</div>
 		</div>
