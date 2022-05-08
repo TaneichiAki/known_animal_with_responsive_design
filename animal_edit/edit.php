@@ -78,38 +78,39 @@
 		<div class="container-fluid">
 			<div class="row">
 				<form class="border offset-1 col-10 offset-md-3 col-md-6 rounded bg-light mt-5" method="post" enctype="multipart/form-data">
-					<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
+					<div class="offset-3 col-6 text-center mt-3">
 					<h4>動物データの更新</h4>
-					<h6><?php
-					if ($obj->existMsg()){
-						echo "<center><div>".$obj->getMsg()."</div></center>";
-					}
-					?></h6>
+					<h6>
+						<?php
+							if ($obj->existMsg()){
+								echo "<center><div>".$obj->getMsg()."</div></center>";
+							}
+						?>
+					</h6>
+					<br>
+					<h5><?php echo "対象の動物：".$select_animal ?></h5>
 					</div>
-						<div class="offset-md-3 col-md-6 text-center mt-3">
-							<h5><?php echo "対象の動物：".$select_animal ?></h5>
-						</div>
-						<div class="offset-2 col-8 form-inline">
-							<label for="family" class="control-label">何科</label>
-							<input type="family" class="form-control" id="family" name="family" placeholder="何科" value="<?php echo $select_family ?>" >
-						</div>
-						<div class="offset-2 col-8">
-							<label for="features" class="control-label">特徴</label>
-							<input type="features" class="form-control" name="features" placeholder="特徴" value="<?php echo $select_features ?>" >
-						</div>
-						<div class="offset-2 col-8">
-							<label for="date" class="control-label">知った日</label>
-							<input type="date" class="form-control" name="date" placeholder="知った日" value="<?php echo $select_date ?>" >
-						</div>
-						<div class="offset-2 col-8">
-							<label for="file" class="control-label">イメージ画像</label>
-							<input type="file" class="form-control" name="image">
-							<br>
-						</div>
-						<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">更新</button>
-						<input type = "hidden" name = "update_animal"  value = "<?= $select_no ?>">
+					<div class="offset-2 col-8">
+						<label for="family" class="control-label">何科</label>
+						<input type="family" class="form-control" id="family" name="family" placeholder="何科" value="<?php echo $select_family ?>" >
+					</div>
+					<div class="offset-2 col-8">
+						<label for="features" class="control-label">特徴</label>
+						<input type="features" class="form-control" name="features" placeholder="特徴" value="<?php echo $select_features ?>" >
+					</div>
+					<div class="offset-2 col-8">
+						<label for="date" class="control-label">知った日</label>
+						<input type="date" class="form-control" name="date" placeholder="知った日" value="<?php echo $select_date ?>" >
+					</div>
+					<div class="offset-2 col-8">
+						<label for="file" class="control-label">イメージ画像</label>
+						<input type="file" class="form-control" name="image">
 						<br>
-						<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+					</div>
+					<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">更新</button>
+					<input type = "hidden" name = "update_animal"  value = "<?= $select_no ?>">
+					<br>
+					<button class="offset-4 col-4 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
 				</form>
 			</div>
 		</div>
