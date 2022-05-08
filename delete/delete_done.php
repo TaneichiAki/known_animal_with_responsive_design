@@ -21,15 +21,19 @@
 		<title>削除完了</title>
 	</head>
 	<body>
-		<div class="offset-md-3 col-md-6 text-center mt-4">
-			<h6>削除しました！</h6>
-			<script type="text/javascript">
-				function refresh(){
-					window.opener.location.reload();
-					window.close();
-				}
-			</script>
-			<button class="col-md-2 btn btn-primary btn-sm mt-4" type="button" onclick="refresh()">閉じる</button>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="offset-3 col-6 text-center mt-4">
+					<h6>削除しました！</h6>
+					<script type="text/javascript">
+						function refresh(){
+							window.opener.location.reload();
+							window.close();
+						}
+					</script>
+					<button class="col-5 btn btn-primary btn-sm mt-4" type="button" onclick="refresh()">閉じる</button>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
