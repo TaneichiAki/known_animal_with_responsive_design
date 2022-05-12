@@ -108,24 +108,39 @@
 		<title>パスワード再設定画面</title>
 	</head>
 	<body>
-		<div class="offset-md-4 col-md-4 text-center mt-3 mb-3">
-		<form class="border rounded bg-light mt-5 mb-5" method="post">
-			<h4 class="mt-3">パスワード再設定</h4>
-				<?php
-					if ($msg != ""){
-						echo "<center><div>".$msg."</div></center>";
-					}
-				?>
-				<br>
-			<div class="container-fluid">
-			<p>known_animalシステムアカウントに関連づけられているEメールアドレスを入力してください。</p>
-			<div class="offset-md-2 col-md-8">
-			<input type='email' class="form-control" name='mail'>
-			<button class="col-md-8 btn btn-primary btn-sm mt-4 mb-4" type="submit">パスワードを再設定</button>
+		<div class="container-fluid">
+			<div class="row">
+				<form class="border offset-1 col-10 offset-md-3 col-md-6 rounded bg-light mt-4 mb-5" method="post">
+					<div class="row">
+						<div class="offset-2 col-8 text-center mt-3 mb-3">
+							<h5>パスワード再設定</h5>
+							<?php
+								if ($msg != ""){
+									echo "<center><div>".$msg."</div></center>";
+								}
+							?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 text-center mt-3 mb-3">
+							<p>known_animalシステムアカウントに関連づけられているEメールアドレスを入力してください。</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="offset-2 col-8 mt-3">
+							<input type='email' class="form-control" name='mail'>
+						</div>
+					</div>
+					<div class="row">
+						<button class="offset-2 col-8 offset-md-4 col-md-4 btn btn-primary btn-sm mt-4 mb-4" type="submit">パスワードを再設定</button>
+					</div>
+				</form>
 			</div>
+			<div class="row">
+				<div class="offset-2 col-8 offset-md-4 col-md-4 text-center">
+					<a href="<?php echo Constants::LOGIN_URL?>" class="link-primary text-decoration-none">ログイン画面へ戻る</a>
+				</div>
 			</div>
-		</form>
-		<a href="<?php echo Constants::LOGIN_URL?>" class="link-primary text-decoration-none">ログイン画面へ戻る</a>
 		</div>
 	</body>
 </html>
