@@ -110,7 +110,7 @@
 	<body>
 		<div class="container-fluid">
 			<div class="row">
-				<form class="border offset-1 col-10 offset-md-3 col-md-6 rounded bg-light mt-4 mb-5" method="post">
+				<form class="border offset-1 col-10 offset-md-4 col-md-4 rounded bg-light mt-4 mb-5" method="post">
 					<div class="row">
 						<div class="offset-2 col-8 text-center mt-3 mb-3">
 							<h5>パスワード再設定</h5>
