@@ -79,7 +79,7 @@
 				</div>
 				<div class="row">
 					<div class="offset-2 col-8 text-center mt-3">
-						<div>新しい名</div>
+						<div>新しい姓</div>
 					</div>
 				</div>
 				<div class="row">

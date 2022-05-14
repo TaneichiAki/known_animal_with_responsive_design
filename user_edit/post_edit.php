@@ -65,26 +65,35 @@
 
 	</head>
 	<body>
-	<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
-		<form method="post" enctype="multipart/form-data">
-			<h4>ユーザー情報の編集</h4>
-			<?php
-				if ($msg != ""){
-					echo "<center><div>".$msg."</div></center>";
-				}
-			?>
-			<br>
-			<div class="container-fluid">
-			<div>新しい役職名</div>
-			<div class="offset-md-4 col-md-4">
-			<input type="text" class="form-control" name="post" value="<?php echo $user['data']['post']?>">
-			</div>
-			<br>
-			<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">更新</button>
-			<br>
-			<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
-			</div>
-		</form>
-	</div>
+		<div class="container-fluid">
+			<form class="border offset-1 col-10 offset-md-4 col-md-4 rounded bg-light mt-4 mb-5" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="offset-2 col-8 text-center mt-3 mb-3">
+						<h4>ユーザー情報の編集</h4>
+						<?php
+							if ($msg != ""){
+								echo "<center><div>".$msg."</div></center>";
+							}
+						?>
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset-2 col-8 text-center mt-3">
+						<div>新しい役職名</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset-2 col-8 mt-2">
+						<input type="text" class="form-control" name="post" value="<?php echo $user['data']['post']?>">
+					</div>
+				</div>
+				<div class="row">
+					<button class="offset-2 col-8 offset-md-4 col-md-4 btn btn-primary btn-sm mt-4" type="submit">更新</button>
+				</div>
+				<div class="row">
+					<button class="offset-2 col-8 offset-md-4 col-md-4 btn btn-primary btn-sm mt-3 mb-4" type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
