@@ -89,30 +89,45 @@
 
 	</head>
 	<body>
-	<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
-		<form method="post" enctype="multipart/form-data">
-				<h4>パスワード変更</h4>
-					<?php
-					if ($msg != ""){
-						echo "<center><div>".$msg."</div></center>";
-					}
-					?>
-				<div class="container-fluid">
-				<div class="offset-md-4 col-md-4">
-					<p>現在のパスワード: <input type="password" class="form-control" name="current_pass"></p>
+		<div class="container-fluid">
+			<form class="border offset-1 col-10 offset-md-4 col-md-4 rounded bg-light mt-4 mb-5" method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="offset-2 col-8 text-center mt-3 mb-3">
+						<h4>パスワード変更</h4>
+							<?php
+							if ($msg != ""){
+								echo "<center><div>".$msg."</div></center>";
+							}
+							?>
+					</div>
 				</div>
-				<div class="offset-md-4 col-md-4">
-					<p>新しいパスワード: <input type="password" class="form-control" name="new_pass"></p>
+				<div class="row">
+					<div class="offset-2 col-8 mt-2">
+						<p>現在のパスワード: <input type="password" class="form-control" name="current_pass"></p>
+					</div>
 				</div>
-				<div class="offset-md-4 col-md-4">
-					<p>新しいパスワード: <input type="password" class="form-control" name="re_new_pass" placeholder="もう一度入力してください"></p>
-					<p>※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</p>
+				<div class="row">
+					<div class="offset-2 col-8 mt-2">
+						<p>新しいパスワード: <input type="password" class="form-control" name="new_pass"></p>
+					</div>
 				</div>
-				<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="submit">変更</button>
-				<br>
-				<button class="col-md-4 btn btn-primary btn-sm mt-2 mb-3" type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
-			</div>
-		</form>
+				<div class="row">
+					<div class="offset-2 col-8 mt-2">
+						<p>新しいパスワード: <input type="password" class="form-control" name="re_new_pass" placeholder="もう一度入力してください"></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="offset-2 col-8 mt-2">
+						<p>※パスワードは半角英小文字大文字数字をそれぞれ1種類以上含む8文字以上にしてください。</p>
+					</div>
+				</div>
+				<div class="row">
+					<button class="offset-2 col-8 offset-md-4 col-md-4 btn btn-primary btn-sm mt-4" type="submit">変更</button>
+				</div>
+				<div class="row">
+					<button class="offset-2 col-8 offset-md-4 col-md-4 btn btn-primary btn-sm mt-3 mb-4" type="button" onclick="location.href='<?php echo Constants::USER_EDIT_URL?>'">ユーザー情報へ戻る</button>
+				</div>
+			</form>
 		</div>
 	</body>
 </html>
