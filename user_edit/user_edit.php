@@ -37,14 +37,21 @@
 		<title>ユーザー情報編集</title>
 	</head>
 	<body>
-		<div class="offset-md-3 col-md-6 text-center mt-3 mb-3">
-			<h4>ユーザー情報</h4>
-				<table class="table table-striped table-bordered">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="offset-1 col-10 offset-md-3 col-md-6 text-center mt-3">
+					<h4>ユーザー情報</h4>
+				</div>
+			</div>
+				<div class="table-responsive col-12 offset-md-3 col-md-6 text-center mt-3 mb-3">
+				<table class="table table-sm table-striped table-bordered">
+					<thead>
 					<tr class="bg-secondary text-white">
-						<th scope="col">項目</th>
-						<th scope="col">登録データ</th>
-						<th scope="col"></th>
+						<th style="width: 20%">項目</th>
+						<th style="width: 60%">登録データ</th>
+						<th style="width: 20%"></th>
 					</tr>
+				</thead>
 					<tr>
 						<th>会員番号</th>
 						<td>
@@ -143,8 +150,10 @@
 					 		</td>
 					 	</tr>
 				</table>
-				<br>
-			<button  class="col-md-2 btn btn-primary btn-sm mt-2 mb-3"　type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
 		</div>
+		<div class="row">
+				<button  class="offset-3 col-6 offset-md-5 col-md-2 btn btn-primary btn-sm mt-2 mb-3"　type="button" onclick="location.href='<?php echo Constants::TOP_URL?>'">トップページへ戻る</button>
+		</div>
+</div>
 	</body>
 </html>
