@@ -1,15 +1,5 @@
 <?php
 class Constants {
-	//データベース名
-	const DB_NAME = "aki_db";
-	//データベースがあるサーバーの場所
-	const DB_HOST = "160.16.148.161";
-	//データベースのポート番号
-	const DB_PORT = "3306";
-	//データベースのユーザー名
-	const DB_USER = "aki";
-	//データベースのパスワード
-	const DB_PASS = "AKIaki3!";
 	//ルートディレクトリのURL
 	const ROOT_URL = "/~testaki";
 
