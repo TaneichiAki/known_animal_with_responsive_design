@@ -1,6 +1,7 @@
 <?php
 		require_once(__DIR__."/../classes/Dao.php");
 		require_once(__DIR__."/../classes/constants.php");
+
 		session_start();
 		//ログアウトボタン押下後、セッションIDを削除する
 		if( !empty($_GET['btn_logout']) ) {
@@ -91,19 +92,12 @@
 		<div class="row">
 			<?php echo $_REQUEST["update_message"] ?>
 		</div>
-			<div class="card-group">
-				<div class="row">
+			<div class="row">
+				<div class="card-group">
 					<?php for($i = 0;$i < $count; $i++): ?>
   				<div class="col-sm-3">
 						<div class="card">
-							<?php
-							$filename = Constants::ANIMAL_PHOTO_SERVER.$animals['data'][$i]['no'].'_animal.jpg';
-							?>
-							<?php if(file_exists($filename)): ?>
-							<img src='/~testaki/animal_photo/<?php echo $animals['data'][$i]['no'] ?>_animal.jpg?<?php echo date("YmdHis");?>' class="card-img-top" height=220 width=auto>
-							<?php else: ?>
-							<img src='/~testaki/animal_photo/no_image.jpeg?<?php echo date("YmdHis");?>' class="card-img-top" height=220 width=auto>
-							<?php endif; ?>
+							<img src="gazou.php?gazou_animal=<?php echo $animals['data'][$i]['no'] ?>" class="card-img-top" height=220 width=auto>
 							<div class="card-body">
 								<h5 class="card-title">
 									<?= $animals['data'][$i]['name']; ?>
